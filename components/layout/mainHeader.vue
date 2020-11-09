@@ -1,12 +1,15 @@
 <template>
   <header>
-    <main-nav-btn />
     <section id="brand" @click="$store.dispatch('setNavPayload', false)">
-      <nuxt-link to="/">brand here</nuxt-link>
+      <nuxt-link to="/">
+        <Logo />
+      </nuxt-link>
     </section>
-    <main-nav v-show="$store.state.navState" @click="$store.dispatch('setNavPayload', false)">
-      <socials />
+    <main-nav @click="$store.dispatch('setNavPayload', false)">
+      <!-- v-show="$store.state.navState" -->
+      <!-- <socials /> -->
     </main-nav>
+    <main-nav-btn />
   </header>
 </template>
 
@@ -33,15 +36,21 @@
     left: 0;
     width: 100%;
     height: auto;
-    background: $white;
+    padding: 30px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
   }
   #brand {
     position: relative;
     z-index: 9;
     display: block;
+    left: 0;
+    width: 90px;
   }
   #mainNav {
     padding-top: $headerHeight;
+    z-index: 10;
   }
   .navOpen {
     #mainNav {

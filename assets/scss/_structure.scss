@@ -1,4 +1,6 @@
 body {
+  background: $warmred;
+  color: $vanilla;
   &.navOpen {
     overflow: hidden;
   }

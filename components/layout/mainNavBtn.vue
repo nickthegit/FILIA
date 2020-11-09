@@ -9,7 +9,6 @@
     <span class="hamburger-box">
       <span class="hamburger-inner"></span>
     </span>
-    <label for="menu-btn">{{ $store.state.navState ? 'CLOSE' : 'MENU' }}</label>
   </button>
 </template>
 
@@ -25,8 +24,8 @@
 </script>
 
 <style lang="scss" scoped>
-  $hamburger-padding-x: $headerHeight / 4;
-  $hamburger-padding-y: $headerHeight / 4;
+  $hamburger-padding-x: 0;
+  $hamburger-padding-y: 0;
   $hamburger-layer-width: 25px;
   $hamburger-layer-height: 2px;
   $hamburger-layer-spacing: 5px;
@@ -41,6 +40,7 @@
     z-index: 10;
     display: block;
     color: $black;
+    display: none;
     // background-color: rgb(87, 117, 100) !important;
     label {
       vertical-align: middle;
@@ -56,6 +56,9 @@
     .hamburger-box {
       vertical-align: middle;
       // background: sandybrown;
+    }
+    @include breakpoint(mobile) {
+      display: block;
     }
   }
 </style>
