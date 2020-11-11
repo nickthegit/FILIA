@@ -24,13 +24,13 @@
 </script>
 
 <style lang="scss" scoped>
-  $hamburger-padding-x: 0;
-  $hamburger-padding-y: 0;
-  $hamburger-layer-width: 25px;
-  $hamburger-layer-height: 2px;
+  $hamburger-padding-x: 10px;
+  $hamburger-padding-y: 10px;
+  $hamburger-layer-width: 22.5px;
+  $hamburger-layer-height: 3px;
   $hamburger-layer-spacing: 5px;
-  $hamburger-layer-color: $black;
-  $hamburger-layer-border-radius: 2px;
+  $hamburger-layer-color: $vanilla;
+  $hamburger-layer-border-radius: 0;
   $hamburger-hover-opacity: 0.7;
   $hamburger-active-layer-color: $white !default;
   $hamburger-active-hover-opacity: $hamburger-hover-opacity !default;

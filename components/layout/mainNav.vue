@@ -1,7 +1,7 @@
 <template>
   <nav @click="$store.dispatch('setNavPayload', false)">
     <nuxt-link class="btn" to="/">Sign-up for release info</nuxt-link>
-    <nuxt-link to="/">contact</nuxt-link>
+    <nuxt-link to="/">Contact</nuxt-link>
     <slot></slot>
   </nav>
 </template>
@@ -22,20 +22,22 @@
       color: $vanilla;
       text-decoration: none;
       margin-right: 20px;
+      font-size: 12px;
+      &.btn {
+        color: $warmred;
+      }
       &:last-child {
         margin-right: 0;
       }
+      @include breakpoint(mobile) {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
     }
-    .btn {
-      padding: 7.5px 15px;
-      border-radius: 20px;
-      background: $vanilla;
-      color: $warmred;
-    }
-    @include breakpoint(mobile) {
-      width: 100%;
-      height: 100vh;
-      position: fixed;
-    }
+    // @include breakpoint(mobile) {
+    //   width: 100%;
+    //   height: 100vh;
+    //   position: fixed;
+    // }
   }
 </style>

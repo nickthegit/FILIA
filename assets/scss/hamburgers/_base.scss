@@ -82,11 +82,11 @@
 
   &::before {
     top: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
-    width: $hamburger-layer-width - 5px;
+    // width: $hamburger-layer-width - 5px;
   }
 
   &::after {
     bottom: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
-    width: $hamburger-layer-width - 10px;
+    // width: $hamburger-layer-width - 10px;
   }
 }

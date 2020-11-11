@@ -1,7 +1,18 @@
 body {
-  background: $warmred;
-  color: $vanilla;
+  background: $offWhite;
+  color: $black;
   &.navOpen {
     overflow: hidden;
   }
+}
+
+.btn {
+  padding: 7.5px 20px;
+  border-radius: 20px;
+  background: $vanilla;
+  color: $warmred;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 12px;
+  padding-bottom: 8px;
 }

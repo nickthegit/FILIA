@@ -5,10 +5,16 @@
         <Logo />
       </nuxt-link>
     </section>
-    <main-nav @click="$store.dispatch('setNavPayload', false)">
-      <!-- v-show="$store.state.navState" -->
-      <!-- <socials /> -->
-    </main-nav>
+    <main-nav
+      @click="$store.dispatch('setNavPayload', false)"
+      class="nav_main"
+    />
+    <!-- v-show="$store.state.navState" -->
+    <main-nav
+      @click="$store.dispatch('setNavPayload', false)"
+      class="nav_mobile"
+      v-show="$store.state.navState"
+    />
     <main-nav-btn />
   </header>
 </template>
@@ -38,8 +44,13 @@
     height: auto;
     padding: 30px;
     display: flex;
-    align-items: flex-end;
+    // align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
+    background: $primary;
+    @include breakpoint(mobile) {
+      padding-right: 20px;
+    }
   }
   #brand {
     position: relative;
@@ -51,6 +62,24 @@
   #mainNav {
     padding-top: $headerHeight;
     z-index: 10;
+  }
+  .nav_main {
+    display: block;
+    @include breakpoint(mobile) {
+      display: none;
+    }
+  }
+  .nav_mobile {
+    @include breakpoint(mobile) {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: $primary;
+    }
   }
   .navOpen {
     #mainNav {
