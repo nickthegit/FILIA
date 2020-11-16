@@ -1,6 +1,8 @@
 <template>
   <nav @click="$store.dispatch('setNavPayload', false)">
-    <nuxt-link class="btn" to="/">Sign-up for release info</nuxt-link>
+    <anchor-button type="link" hrefLink="#" theme="vanilla" class="nav-cta"
+      >Sign-up for release info</anchor-button
+    >
     <nuxt-link to="/">Contact</nuxt-link>
     <slot></slot>
   </nav>
@@ -18,11 +20,15 @@
     top: 0;
     left: 0;
     display: block;
+    .nav-cta {
+      margin-right: 20px;
+    }
     a {
       color: $vanilla;
       text-decoration: none;
       margin-right: 20px;
       font-size: 12px;
+      display: inline-block;
       &.btn {
         color: $warmred;
       }
