@@ -137,27 +137,62 @@
       </figure>
       <div class="copy">
         <h2>AN INTRODUCTION HEADLINE TO SOME BULLET POINTS</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit vestib ulum
-          posuere ex nec eros imperdiet, pretium rutrum ex auctor. Praesent
-          pulvinar felis eget.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit vestib ulum
-          posuere ex nec eros imperdiet.
-        </p>
+        <ul>
+          <li>
+            <span><tick /></span>Lorem ipsum dolor sit amet, consectetur
+          </li>
+          <li>
+            <span><tick /></span>Lorem ipsum dolor sit amet, consectetur
+          </li>
+          <li>
+            <span><tick /></span>Lorem ipsum dolor sit amet, consectetur
+          </li>
+          <li>
+            <span><tick /></span>Lorem ipsum dolor sit amet, consectetur
+          </li>
+          <li>
+            <span><tick /></span>Lorem ipsum dolor sit amet, consectetur
+          </li>
+        </ul>
         <anchor-button type="link" hrefLink="#" theme="orange"
           >Sign-up for release info</anchor-button
         >
+      </div>
+    </section>
+    <section class="wind-down">
+      <div class="container">
+        <div class="copy">
+          <h2>WIND DOWN. CHARGE UP.</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit vestib ulum
+            posuere ex nec eros imperdiet, pretium rutrum ex auctor. Praesent
+            pulvinar felis eget.
+          </p>
+          <anchor-button type="link" hrefLink="#" theme="vanilla"
+            >Sign-up for release info</anchor-button
+          >
+        </div>
+        <div class="img-wrap">
+          <figure class="figure-1">
+            <building-a />
+          </figure>
+          <figure class="figure-2">
+            <building-b />
+          </figure>
+        </div>
+        <!-- <figure>
+          <building-a />
+        </figure> -->
       </div>
     </section>
   </main>
 </template>
 
 <script>
+  import BuildingA from '~/components/Illustrations/buildingA.vue'
   import anchorButton from '~/components/layout/anchorButton.vue'
   export default {
-    components: { anchorButton },
+    components: { anchorButton, BuildingA },
     mounted() {
       // * Access ENV with:
       // process.env.ENV_TEST
@@ -373,8 +408,23 @@
       h2 {
         margin-bottom: 50px;
       }
-      p {
+      p,
+      ul {
         margin: 25px 0;
+      }
+      li {
+        padding: 10px 0;
+        border-top: 1px solid $black;
+        span {
+          display: inline-block;
+          // padding: 5px;
+          height: 14px;
+          width: 14px;
+          margin-right: 5px;
+          svg {
+            width: 100%;
+          }
+        }
       }
       a {
         margin-top: 50px;
@@ -395,6 +445,75 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+    }
+  }
+  .wind-down {
+    width: 100%;
+    padding: 30px;
+    background: $white;
+    position: relative;
+    @include breakpoint(mobile) {
+      padding: 25px;
+    }
+    .container {
+      width: 100%;
+      position: relative;
+      background: $warmred;
+      color: $vanilla;
+      display: grid;
+      grid-template: auto / 45% 55%;
+      @include breakpoint(mobile) {
+        grid-template: auto auto / 100%;
+      }
+    }
+    .copy {
+      width: 100%;
+      padding: 120px 50px;
+      // position: absolute;
+      @include breakpoint(mobile) {
+        grid-row: 2 / 3;
+        padding: 0 40px 60px 40px;
+        text-align: center;
+      }
+      p {
+        margin: 25px 0;
+      }
+    }
+    .img-wrap {
+      position: relative;
+      overflow: hidden;
+      @include breakpoint(mobile) {
+        grid-row: 1 / 2;
+        overflow: initial;
+      }
+    }
+    .figure-1 {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      overflow: hidden;
+      svg {
+        height: 160%;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      @include breakpoint(mobile) {
+        display: none;
+      }
+    }
+    .figure-2 {
+      width: 160px;
+      display: none;
+      margin: 0 auto;
+      padding: 40px;
+      svg {
+        width: 100%;
+      }
+      @include breakpoint(mobile) {
+        display: block;
       }
     }
   }
