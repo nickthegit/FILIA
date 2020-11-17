@@ -185,6 +185,55 @@
         </figure> -->
       </div>
     </section>
+    <section class="filia-highlights">
+      <div class="container">
+        <div class="highlights">
+          <h3>
+            FILIA COMPANY HEADLINE THAT INTRODUCES THE <br />
+            COMPANY AND WHO WE ARE GOES HERE
+          </h3>
+          <div class="highlight">
+            <figure class="highlight__icon">
+              <img
+                src="~/assets/Assets for build/SVG/Filia-Icon-Measure.svg"
+                alt="home-icon"
+              />
+            </figure>
+            <h4>PRODUCT HIGHLIGHT</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit vestib
+              ulum posuere ex nec eros imperdiet, pretium rutrum ex auctor.
+            </p>
+          </div>
+          <div class="highlight">
+            <figure class="highlight__icon">
+              <img
+                src="~/assets/Assets for build/SVG/Filia-Icon-Service.svg"
+                alt="home-icon"
+              />
+            </figure>
+            <h4>PRODUCT HIGHLIGHT</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit vestib
+              ulum posuere ex nec eros imperdiet, pretium rutrum ex auctor.
+            </p>
+          </div>
+          <div class="highlight">
+            <figure class="highlight__icon">
+              <img
+                src="~/assets/Assets for build/SVG/Filia-Icon-10Percent.svg"
+                alt="home-icon"
+              />
+            </figure>
+            <h4>PRODUCT HIGHLIGHT</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit vestib
+              ulum posuere ex nec eros imperdiet, pretium rutrum ex auctor.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -468,8 +517,9 @@
       }
     }
     .copy {
-      width: 100%;
+      width: 460px;
       padding: 120px 50px;
+      justify-self: end;
       // position: absolute;
       @include breakpoint(mobile) {
         grid-row: 2 / 3;
@@ -514,6 +564,65 @@
       }
       @include breakpoint(mobile) {
         display: block;
+      }
+    }
+  }
+  .filia-highlights {
+    width: 100%;
+    padding: 130px 30px;
+    background: $offWhite;
+    position: relative;
+    @include breakpoint(mobile) {
+      padding: 50px 25px;
+    }
+    .container {
+      width: 100%;
+      position: relative;
+    }
+    h3 {
+      width: 100%;
+      display: block;
+      text-align: center;
+      @include breakpoint(mobile) {
+        padding-bottom: 25px;
+      }
+    }
+    .highlights {
+      width: 100%;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      @include breakpoint(mobile) {
+        flex-direction: column;
+        padding: 40px 0;
+      }
+    }
+    .highlight {
+      width: 100%;
+      max-width: 200px;
+      text-align: center;
+      padding: 20px;
+      margin: 25px;
+      color: $black;
+      @include breakpoint(mobile) {
+        padding: 20px;
+        margin: 0;
+      }
+      &__icon {
+        width: 40px;
+        height: 40px;
+        margin: 0 auto 15px auto;
+        display: block;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+      h4 {
+        margin-bottom: 20px;
       }
     }
   }
