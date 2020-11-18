@@ -4,7 +4,10 @@
       <div class="container">
         <div class="newsletter__wrap"></div>
         <div class="contact__wrap">
-          <div class="background"></div>
+          <div class="background">
+            <sun-illustration class="sun" />
+            <city class="city" />
+          </div>
           <div class="copy">
             <h3>CONTACT MESSAGE HERE</h3>
             <p>
@@ -42,8 +45,10 @@
 <script>
   import Facebook from '~/components/icons/facebook.vue'
   import instagram from '~/components/icons/instagram.vue'
+  import City from '~/components/Illustrations/city.vue'
+  import SunIllustration from '~/components/Illustrations/sunIllustration.vue'
   export default {
-    components: { instagram, Facebook },
+    components: { instagram, Facebook, City, SunIllustration },
     computed: {
       year() {
         return new Date().getFullYear()
@@ -81,7 +86,6 @@
     width: 100%;
     height: 0;
     padding-bottom: 66%;
-    background: silver;
     position: relative;
     top: 0;
     left: 0;
@@ -91,6 +95,10 @@
       &:hover {
         text-decoration: underline;
       }
+    }
+    @include breakpoint(tablet-mobile) {
+      padding-bottom: unset;
+      height: auto;
     }
   }
   .background,
@@ -102,8 +110,28 @@
     left: 0;
   }
   .background {
-    background: aquamarine;
+    background: $warmred;
     z-index: 1;
+    overflow: hidden;
+    svg {
+      position: absolute;
+    }
+    .city {
+      width: 135%;
+      bottom: -25%;
+      left: 0;
+      z-index: 2;
+      @include breakpoint(tablet-mobile) {
+        bottom: -10%;
+      }
+    }
+    .sun {
+      width: 75%;
+      z-index: 1;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
   .copy {
     padding: 70px;
@@ -113,6 +141,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    @include breakpoint(tablet-mobile) {
+      position: relative;
+    }
     h3,
     p,
     a {

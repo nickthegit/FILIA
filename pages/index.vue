@@ -521,10 +521,14 @@
       padding: 120px 50px;
       justify-self: end;
       // position: absolute;
+      @include breakpoint(tablet) {
+        width: 100%;
+      }
       @include breakpoint(mobile) {
         grid-row: 2 / 3;
         padding: 0 40px 60px 40px;
         text-align: center;
+        width: 100%;
       }
       p {
         margin: 25px 0;
