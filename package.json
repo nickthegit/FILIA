@@ -14,10 +14,11 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/style-resources": "^1.0.0",
     "gsap": "file:gsap-bonus.tgz",
+    "jsonp": "^0.2.1",
     "nuxt": "^2.14.6",
+    "query-string": "^6.13.7",
     "simple-icons": "^3.11.0",
     "swiper": "^6.3.3",
-    "vue-mailchimp-subscribe": "^1.1.0",
     "vue-types": "^2.0.2"
   },
   "devDependencies": {
