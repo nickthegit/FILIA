@@ -2,7 +2,9 @@
   <footer>
     <section class="top">
       <div class="container">
-        <div class="newsletter__wrap"></div>
+        <div class="newsletter__wrap">
+          <mc-newsletter />
+        </div>
         <div class="contact__wrap">
           <div class="background">
             <sun-illustration class="sun" />
@@ -47,8 +49,9 @@
   import instagram from '~/components/icons/instagram.vue'
   import City from '~/components/Illustrations/city.vue'
   import SunIllustration from '~/components/Illustrations/sunIllustration.vue'
+  import McNewsletter from '~/components/mcNewsletter.vue'
   export default {
-    components: { instagram, Facebook, City, SunIllustration },
+    components: { instagram, Facebook, City, SunIllustration, McNewsletter },
     computed: {
       year() {
         return new Date().getFullYear()
