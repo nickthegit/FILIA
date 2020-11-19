@@ -31,7 +31,9 @@
             },
             {
               headers: {
-                Authorization: `apikey 526f6feedb6a5d7c81c818dd78091cdf-us7`,
+                Authorization: `apikey: 526f6feedb6a5d7c81c818dd78091cdf-us7`,
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
               },
             }
           )
