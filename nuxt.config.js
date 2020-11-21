@@ -15,10 +15,10 @@ export default {
   ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Filia',
     meta: [
       ...createSEOMeta({
-        title: 'insert title here',
+        title: 'Filia',
         description:
           'insert description here',
         image: '[Insert_NarutoDose_Image_URL]',
@@ -28,6 +28,11 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
+  },
+  env: {
+    MC_UID: process.env.MC_UID,
+    MC_AUDIENCE_ID: process.env.MC_AUDIENCE_ID,
+    MC_LIST_NAME: process.env.MC_LIST_NAME
   },
   /*
   ** Global CSS
@@ -58,8 +63,15 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/toast',
   ],
+  toast: {
+    position: 'bottom-left',
+    duration: 3000,
+    register: [],
+    singleton: false
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options

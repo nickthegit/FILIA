@@ -35,7 +35,7 @@
   }
   a,
   button {
-    padding: 7.5px 20px;
+    padding: 7.5px 30px;
     border-radius: 20px;
     background: $vanilla;
     color: $warmred;
@@ -43,6 +43,8 @@
     text-decoration: none;
     font-size: 12px;
     padding-bottom: 8px;
+    border: none;
+    cursor: pointer;
     &:hover {
       opacity: 0.8;
     }

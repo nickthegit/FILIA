@@ -1,56 +1,120 @@
 <template>
   <section>
-    <button @click="handleSendEmail">sgsfg</button>
-
-    <!--End mc_embed_signup-->
+    <h3>SIGN-UP MESSAGE HERE LOREM IPSUM DOLOR SIT AMET LOREM IPSUM</h3>
+    <form v-on:submit.prevent>
+      <!-- name -->
+      <input
+        type="text"
+        name="text"
+        id="text"
+        placeholder="Name"
+        v-model.trim="$v.userName.$model"
+      />
+      <!-- email -->
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Email"
+        v-model="$v.userEmail.$model"
+      />
+      <!-- submit -->
+      <anchor-button
+        class="submit"
+        type="button"
+        theme="white"
+        :clickAction="submitForm"
+        >Subscribe</anchor-button
+      >
+      <small>Yes I’d like to receive news and updates from Filia</small>
+    </form>
   </section>
 </template>
 
 <script>
-  import jsonp from 'jsonp'
-  import queryString from 'query-string'
-
+  import subscribe from '@input-output-hk/mailchimp-subscribe'
+  import { validationMixin } from 'vuelidate'
+  import { required, minLength, email } from 'vuelidate/lib/validators'
   export default {
-    components: {},
     data() {
       return {
         userEmail: null,
+        userName: null,
         error: false,
         errorMsg: null,
-        status: 'inactive', // inactive, requested, success, error
+        validateErrors: {
+          required: 'Field is required',
+          email: 'Must be a valid email',
+        },
+        nameError: false,
+        emailError: false,
+        status: 'inactive', // inactive, pending, success, error
       }
     },
+    mixins: [validationMixin],
+    validations: {
+      userName: {
+        required,
+        minLength: minLength(1),
+      },
+      userEmail: {
+        required,
+        email,
+      },
+    },
     methods: {
-      handleSendEmail() {
-        this.$axios
-          .post(
-            'https://us7.api.mailchimp.com/3.0/lists/512087/members/',
-            {
-              status: 'subscribed',
-              email_address: 'testnick@test.com',
+      async submitForm() {
+        this.nameError = await false
+        this.emailError = await false
+        if (!this.$v.$invalid) {
+          // * VALID
+          this.status = await 'pending'
+          this.$toast.show('loading')
+          await subscribe({
+            email: this.userEmail,
+            uID: process.env.MC_UID,
+            audienceID: process.env.MC_AUDIENCE_ID,
+            listName: process.env.MC_LIST_NAME,
+            customFields: {
+              FNAME: this.userName,
             },
-            {
-              headers: {
-                Authorization: `apikey: 526f6feedb6a5d7c81c818dd78091cdf-us7`,
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
-              },
-            }
-          )
-          .then((response) => {
-            console.log('SUCCESS', response.data)
           })
-          .catch((error) => {
-            console.log('safdadfs', error)
-          })
-      },
-      onError(err) {
-        // handle error
-        console.log('err', err)
-      },
-      onSuccess() {
-        console.log('Success!!')
-        // handle success
+            .then((result) => {
+              this.status = 'success'
+              this.$toast.success(`Success! ${result.message}`)
+              console.log(result)
+            })
+            .catch((error) => {
+              this.status = 'error'
+              this.$toast.error(`${error}`, { duration: 5000 })
+              console.error(error)
+            })
+          console.log('VALID', this.$v)
+        } else {
+          // * INVALID
+          // nothing filled in
+          !this.$v.$error
+            ? this.$toast.error(`Please fill out ALL fields.`, {
+                duration: 5000,
+              })
+            : ''
+          !this.$v.userEmail.required
+            ? this.$toast.error(`Email is required.`, {
+                duration: 5000,
+              })
+            : ''
+          !this.$v.userEmail.email
+            ? this.$toast.error(`Must be an email.`, {
+                duration: 5000,
+              })
+            : ''
+          !this.$v.userName.required
+            ? this.$toast.error(`Name is required.`, {
+                duration: 5000,
+              })
+            : ''
+          console.log('INVALID', this.$v)
+        }
       },
     },
     mounted() {},
@@ -58,4 +122,41 @@
 </script>
 
 <style lang="scss" scoped>
+  section {
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    color: $white;
+    background: $pacific;
+  }
+  form {
+    width: 100%;
+    padding: 30px 70px 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+  input {
+    border: none;
+    border-bottom: 1px solid $white;
+    color: $white;
+    padding: 5px 0;
+    font-size: 16px;
+    margin-bottom: 20px;
+    background: transparent;
+    &::placeholder {
+      color: rgba($white, 0.5);
+    }
+  }
+  .submit {
+    margin: 10px 0;
+  }
+  small {
+    margin-top: 10px;
+  }
 </style>

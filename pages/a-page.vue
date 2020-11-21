@@ -1,17 +1,17 @@
 <template>
   <div>
     <h1>Example Page</h1>
-    <slider-container>
+    <!-- <slider-container>
       <div class="swiper-slide">Slide a</div>
       <div class="swiper-slide">Slide b</div>
       <div class="swiper-slide">Slide 3</div>
-    </slider-container>
+    </slider-container> -->
 
     <h2 id="gsaptest">fdkghfaksjhkraejghkejragh</h2>
     <section id="newsletter-mc-form">
-      <mc-newsletter />
+      <!-- <mc-newsletter /> -->
     </section>
-    <general-image />
+    <!-- <general-image /> -->
   </div>
 </template>
 
