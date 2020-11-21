@@ -41,7 +41,7 @@
     color: $warmred;
     display: inline-block;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 14px;
     padding-bottom: 8px;
     border: none;
     cursor: pointer;

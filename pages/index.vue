@@ -2,18 +2,16 @@
   <main>
     <article class="hero">
       <section class="headline">
-        <h1>
-          SOLAR HEADLINE STATEMENT THAT WILL GRAB ATTENTION AT THE TOP OF THE
-          PAGE
-        </h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-          posuere ex nec eros imperdiet, pretium rutrum ex auctor. Praesent
-          pulvinar felis eget odio vulputate, ut iaculis nulla vehicula.
-        </p>
-        <anchor-button type="link" hrefLink="#" theme="vanilla"
-          >Sign-up for release info</anchor-button
+        <h1>{{ hero.headline }}</h1>
+        <p
+          v-for="(paragraph, index) in hero.subtitle"
+          :key="`herosubtitle${index}`"
         >
+          {{ paragraph }}
+        </p>
+        <anchor-button type="link" hrefLink="#" theme="vanilla">{{
+          hero.buttonLabel
+        }}</anchor-button>
       </section>
       <section class="illustration">
         <hero-illustration />
@@ -239,6 +237,18 @@
 
 <script>
   export default {
+    data() {
+      return {
+        hero: {
+          headline: 'Filia. Your Window to Solar Energy.',
+          subtitle: [
+            'We’re Filia. We bring solar energy to every home by integrating solar technology into the fabric of our blackout blinds. Meaning every window can embrace the limitless power of the sun.',
+            'Whether heading up and out to work or down for a siesta, dropping your Filia blind means you can rest easy, knowing you’re always generating clean renewable energy for your home.',
+          ],
+          buttonLabel: 'Join the solar revolution',
+        },
+      }
+    },
     mounted() {
       // * Access ENV with:
       // process.env.ENV_TEST
