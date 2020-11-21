@@ -1,5 +1,9 @@
 <template>
-  <svg
+  <img
+    src="~/assets/Assets for build/SVG/Filia-Illustration-SunUPDATE.svg"
+    alt="Sun llustration"
+  />
+  <!-- <svg
     version="1.1"
     id="Layer_1"
     xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +32,7 @@
       <stop offset="0.8337" style="stop-color: #f45e39" />
     </linearGradient>
     <circle class="st0" cx="395" cy="393" r="386.3" />
-  </svg>
+  </svg> -->
 </template>
 
 <script>

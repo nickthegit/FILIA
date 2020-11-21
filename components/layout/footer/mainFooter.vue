@@ -135,6 +135,7 @@
       }
     }
     .sun {
+      position: absolute;
       width: 75%;
       z-index: 1;
       top: 30%;

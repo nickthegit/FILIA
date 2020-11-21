@@ -238,10 +238,7 @@
 </template>
 
 <script>
-  import BuildingA from '~/components/Illustrations/buildingA.vue'
-  import anchorButton from '~/components/layout/anchorButton.vue'
   export default {
-    components: { anchorButton, BuildingA },
     mounted() {
       // * Access ENV with:
       // process.env.ENV_TEST
