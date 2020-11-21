@@ -132,6 +132,9 @@
     justify-content: center;
     color: $white;
     background: $pacific;
+    @include breakpoint(mobile) {
+      padding: 50px 30px;
+    }
   }
   form {
     width: 100%;
@@ -140,6 +143,9 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
+    @include breakpoint(mobile) {
+      padding: 30px 0 0 0;
+    }
   }
   input {
     border: none;

@@ -40,6 +40,18 @@
         </div>
       </div>
     </section>
+    <section class="bottom">
+      <ul class="terms">
+        <li>
+          <nuxt-link to="/">Privacy Policy</nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/">Terms of Service</nuxt-link>
+        </li>
+      </ul>
+      <p>© Filia {{ year }}, All rights reserved.</p>
+      <Logo theme="black" />
+    </section>
     <!-- <section>© company name {{ year }}, All rights reserved.</section> -->
   </footer>
 </template>
@@ -64,7 +76,7 @@
     background: $white;
     position: relative;
     @include breakpoint(mobile) {
-      padding: 25px;
+      padding: 0;
     }
     .container {
       width: 100%;
@@ -81,8 +93,9 @@
     background: $warmred;
     color: $vanilla;
     width: 100%;
-    height: 0;
-    padding-bottom: 66%;
+    height: auto;
+    min-height: 500px;
+    // padding-bottom: 66%;
     position: relative;
     top: 0;
     left: 0;
@@ -94,8 +107,7 @@
       }
     }
     @include breakpoint(tablet-mobile) {
-      padding-bottom: unset;
-      height: auto;
+      min-height: 400px;
     }
   }
   .background,
@@ -139,7 +151,10 @@
     justify-content: center;
     flex-direction: column;
     @include breakpoint(tablet-mobile) {
-      position: relative;
+      // position: relative;
+    }
+    @include breakpoint(mobile) {
+      padding: 50px 30px;
     }
     h3,
     p,
@@ -155,6 +170,48 @@
       svg {
         width: 100%;
       }
+    }
+  }
+  .bottom {
+    width: 100%;
+    padding: 20px 30px 30px 30px;
+    background: $white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: $black;
+    @include breakpoint(mobile) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    svg {
+      width: 80px;
+      position: absolute;
+      right: 30px;
+    }
+    ul {
+      li {
+        color: $black;
+        display: inline-block;
+        margin-right: 20px;
+        @include breakpoint(mobile) {
+          display: block;
+          padding-bottom: 10px;
+        }
+      }
+      a {
+        text-decoration: none;
+        color: $black;
+        &:hover,
+        &:focus,
+        &:active {
+          text-decoration: underline;
+        }
+      }
+    }
+    p {
+      color: rgba($black, 0.3);
     }
   }
 </style>
