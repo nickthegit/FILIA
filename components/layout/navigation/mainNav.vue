@@ -5,7 +5,7 @@
       hrefLink="#newsletter"
       theme="vanilla"
       class="nav-cta"
-      >Sign-up for release info</anchor-button
+      >Join the solar revolution</anchor-button
     >
     <nuxt-link to="#contact">Contact</nuxt-link>
     <slot></slot>
@@ -26,12 +26,19 @@
     display: block;
     .nav-cta {
       margin-right: 20px;
+      @include breakpoint(mobile) {
+        margin-right: 0;
+        margin-bottom: 20px;
+        a {
+          font-size: 20px;
+        }
+      }
     }
     a {
       color: $vanilla;
       text-decoration: none;
       margin-right: 20px;
-      font-size: 12px;
+      font-size: 16px;
       display: inline-block;
       &.btn {
         color: $warmred;
@@ -42,6 +49,7 @@
       @include breakpoint(mobile) {
         margin-right: 0;
         margin-bottom: 15px;
+        font-size: 18px;
       }
     }
     // @include breakpoint(mobile) {

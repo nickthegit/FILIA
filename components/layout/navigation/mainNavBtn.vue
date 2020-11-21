@@ -31,7 +31,7 @@
   $hamburger-layer-spacing: 5px;
   $hamburger-layer-color: $vanilla;
   $hamburger-layer-border-radius: 0;
-  $hamburger-hover-opacity: 0.7;
+  $hamburger-hover-opacity: 1;
   $hamburger-active-layer-color: $white !default;
   $hamburger-active-hover-opacity: $hamburger-hover-opacity !default;
   @import '@/assets/scss/hamburgers/hamburgers.scss';

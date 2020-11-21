@@ -177,7 +177,7 @@
             'Our team of installers will quickly and easily fit your blinds then it’s over to you.',
           ],
           buttonLabel: 'Join the solar revolution',
-          img: 'v1605977520/Filia/Filia-InSitu-02-Cropped.png',
+          img: 'v1605989375/Filia/Filia-InSitu-02_v2.png',
         },
         highlights: {
           backgroundImg: 'v1605979358/Filia/Filia-InSitu-01-Cropped.png',
@@ -202,7 +202,7 @@
           ],
         },
         info: {
-          img: 'v1605980814/Filia/Filia-InSitu-03-Cropped.png',
+          img: 'v1605989369/Filia/Filia-InSitu-03_v2.png',
           points: [
             {
               title: 'Cost effective',
