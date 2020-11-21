@@ -9,7 +9,7 @@
         >
           {{ paragraph }}
         </p>
-        <anchor-button type="link" hrefLink="#" theme="vanilla">{{
+        <anchor-button type="link" hrefLink="#newsletter" theme="vanilla">{{
           hero.buttonLabel
         }}</anchor-button>
       </section>
@@ -36,7 +36,7 @@
         >
           {{ paragraph }}
         </p>
-        <anchor-button type="link" hrefLink="#" theme="orange">{{
+        <anchor-button type="link" hrefLink="#newsletter" theme="orange">{{
           intro.buttonLabel
         }}</anchor-button>
       </div>
@@ -104,7 +104,7 @@
             <p>{{ point.copy }}</p>
           </li>
         </ul>
-        <anchor-button type="link" hrefLink="#" theme="orange">{{
+        <anchor-button type="link" hrefLink="#newsletter" theme="orange">{{
           info.buttonLabel
         }}</anchor-button>
       </div>
@@ -114,7 +114,7 @@
         <div class="copy">
           <h2>{{ jumbotron.heading }}</h2>
           <p>{{ jumbotron.copy }}</p>
-          <anchor-button type="link" hrefLink="#" theme="vanilla">{{
+          <anchor-button type="link" hrefLink="#newsletter" theme="vanilla">{{
             jumbotron.buttonLabel
           }}</anchor-button>
         </div>

@@ -1,9 +1,13 @@
 <template>
   <nav @click="$store.dispatch('setNavPayload', false)">
-    <anchor-button type="link" hrefLink="#" theme="vanilla" class="nav-cta"
+    <anchor-button
+      type="link"
+      hrefLink="#newsletter"
+      theme="vanilla"
+      class="nav-cta"
       >Sign-up for release info</anchor-button
     >
-    <nuxt-link to="/">Contact</nuxt-link>
+    <nuxt-link to="#contact">Contact</nuxt-link>
     <slot></slot>
   </nav>
 </template>

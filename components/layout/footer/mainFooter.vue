@@ -2,10 +2,10 @@
   <footer>
     <section class="top">
       <div class="container">
-        <div class="newsletter__wrap">
+        <div class="newsletter__wrap" id="newsletter">
           <newsletter :title="newsletter.title" />
         </div>
-        <div class="contact__wrap">
+        <div class="contact__wrap" id="contact">
           <div class="background">
             <sun-illustration class="sun" />
             <city class="city" />
