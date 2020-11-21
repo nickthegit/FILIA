@@ -22,96 +22,63 @@
     </article>
     <section class="intro">
       <div class="copy">
-        <h2>
-          PRODUCT HEADLINE THAT WILL GRAB ATTENTION AT THE TOP OF THE PAGE
-        </h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit vestib ulum
-          posuere ex nec eros imperdiet, pretium rutrum ex auctor. Praesent
-          pulvinar felis eget.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit vestib ulum
-          posuere ex nec eros imperdiet.
-        </p>
-        <anchor-button type="link" hrefLink="#" theme="orange"
-          >Sign-up for release info</anchor-button
+        <h2>{{ intro.title }}</h2>
+        <p
+          v-for="(paragraph, index) in intro.subtitle"
+          :key="`introsubtitle${index}`"
         >
+          {{ paragraph }}
+        </p>
+        <h3>HOW IT WORKS</h3>
+        <p
+          v-for="(paragraph, index) in intro.bodyCopy"
+          :key="`introbodycopy${index}`"
+        >
+          {{ paragraph }}
+        </p>
+        <anchor-button type="link" hrefLink="#" theme="orange">{{
+          intro.buttonLabel
+        }}</anchor-button>
       </div>
       <figure>
         <img
-          src="~/assets/Assets for build/JPG/Filia-InSitu-02.png"
-          alt="Filia-InSitu"
+          :srcset="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_800/${intro.img},
+          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_1200/${intro.img} 1.5x,
+          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_1600/${intro.img} 2x,
+          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_2000/${intro.img} 2.5x,
+          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_2400/${intro.img} 3x`"
+          :src="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_800/${intro.img}`"
+          alt="Filia-InSitu-1"
         />
-        <!-- <img
-          srcset="~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png,
-          ~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png 1.5x,
-          ~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png 2x,
-          ~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png 2.5x,
-          ~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png 3x,
-          ~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png 4x"
-          src="~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png"
-          alt="Filia-InSitu"
-        /> -->
       </figure>
     </section>
     <section class="product-highlights">
       <div class="container">
         <figure class="background">
           <img
-            src="~/assets/Assets for build/JPG/Filia-InSitu-01.png"
-            alt="Filia-InSitu"
+            :srcset="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,w_1920/${highlights.backgroundImg},
+          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,w_2880/${highlights.backgroundImg} 1.5x,
+          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,w_3840/${highlights.backgroundImg} 2x`"
+            :src="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,w_1920/${highlights.backgroundImg}`"
+            alt="Filia-InSitu-2"
           />
-          <!-- <img
-          srcset="~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png,
-          ~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png 1.5x,
-          ~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png 2x,
-          ~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png 2.5x,
-          ~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png 3x,
-          ~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png 4x"
-          src="~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png"
-          alt="Filia-InSitu"
-        /> -->
         </figure>
         <div class="highlights">
-          <div class="highlight">
-            <figure class="highlight__icon">
-              <img
-                src="~/assets/Assets for build/SVG/Filia-Icon-Home.svg"
-                alt="home-icon"
-              />
-            </figure>
-            <h4>PRODUCT HIGHLIGHT</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit vestib
-              ulum posuere ex nec eros imperdiet, pretium rutrum ex auctor.
-            </p>
-          </div>
-          <div class="highlight">
-            <figure class="highlight__icon">
-              <img
-                src="~/assets/Assets for build/SVG/Filia-Icon-Sun.svg"
-                alt="home-icon"
-              />
-            </figure>
-            <h4>PRODUCT HIGHLIGHT</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit vestib
-              ulum posuere ex nec eros imperdiet, pretium rutrum ex auctor.
-            </p>
-          </div>
-          <div class="highlight">
-            <figure class="highlight__icon">
-              <img
-                src="~/assets/Assets for build/SVG/Filia-Icon-Renewable.svg"
-                alt="home-icon"
-              />
-            </figure>
-            <h4>PRODUCT HIGHLIGHT</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit vestib
-              ulum posuere ex nec eros imperdiet, pretium rutrum ex auctor.
-            </p>
+          <div class="highlights__wrapper">
+            <div
+              class="highlight"
+              v-for="(highlight, index) in highlights.highlights"
+              :key="`hightlight${index}`"
+            >
+              <figure class="highlight__icon">
+                <img
+                  :src="`https://res.cloudinary.com/nickjohn/image/upload/c_scale,f_auto,q_100,w_100/${highlight.icon}`"
+                  alt="highlight-icon"
+                />
+              </figure>
+              <h3>{{ highlight.title }}</h3>
+              <p>{{ highlight.copy }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -119,56 +86,37 @@
     <section class="info">
       <figure>
         <img
-          src="~/assets/Assets for build/JPG/Filia-InSitu-03.png"
-          alt="Filia-InSitu"
+          :srcset="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_800/${info.img},
+          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_1200/${info.img} 1.5x,
+          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_1600/${info.img} 2x,
+          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_2000/${info.img} 2.5x,
+          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_2400/${info.img} 3x`"
+          :src="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_800/${info.img}`"
+          alt="Filia-InSitu-3"
         />
-        <!-- <img
-          srcset="~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png,
-          ~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png 1.5x,
-          ~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png 2x,
-          ~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png 2.5x,
-          ~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png 3x,
-          ~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png 4x"
-          src="~/assets/Assets for build/JPG/Filia-InSitu-02-Cropped.png"
-          alt="Filia-InSitu"
-        /> -->
       </figure>
       <div class="copy">
-        <h2>AN INTRODUCTION HEADLINE TO SOME BULLET POINTS</h2>
+        <!-- <h2>AN INTRODUCTION HEADLINE TO SOME BULLET POINTS</h2> -->
         <ul>
-          <li>
-            <span><tick /></span>Lorem ipsum dolor sit amet, consectetur
-          </li>
-          <li>
-            <span><tick /></span>Lorem ipsum dolor sit amet, consectetur
-          </li>
-          <li>
-            <span><tick /></span>Lorem ipsum dolor sit amet, consectetur
-          </li>
-          <li>
-            <span><tick /></span>Lorem ipsum dolor sit amet, consectetur
-          </li>
-          <li>
-            <span><tick /></span>Lorem ipsum dolor sit amet, consectetur
+          <li v-for="point in info.points" :key="`point${point.index}`">
+            <span><tick /></span>
+            <h4>{{ point.title }}</h4>
+            <p>{{ point.copy }}</p>
           </li>
         </ul>
-        <anchor-button type="link" hrefLink="#" theme="orange"
-          >Sign-up for release info</anchor-button
-        >
+        <anchor-button type="link" hrefLink="#" theme="orange">{{
+          info.buttonLabel
+        }}</anchor-button>
       </div>
     </section>
-    <section class="wind-down">
+    <section class="jumbotron">
       <div class="container">
         <div class="copy">
-          <h2>WIND DOWN. CHARGE UP.</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit vestib ulum
-            posuere ex nec eros imperdiet, pretium rutrum ex auctor. Praesent
-            pulvinar felis eget.
-          </p>
-          <anchor-button type="link" hrefLink="#" theme="vanilla"
-            >Sign-up for release info</anchor-button
-          >
+          <h2>{{ jumbotron.heading }}</h2>
+          <p>{{ jumbotron.copy }}</p>
+          <anchor-button type="link" hrefLink="#" theme="vanilla">{{
+            jumbotron.buttonLabel
+          }}</anchor-button>
         </div>
         <div class="img-wrap">
           <figure class="figure-1">
@@ -178,58 +126,30 @@
             <building-b />
           </figure>
         </div>
-        <!-- <figure>
-          <building-a />
-        </figure> -->
       </div>
     </section>
-    <section class="filia-highlights">
+    <section class="about">
+      <figure class="background">
+        <img
+          :srcset="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,w_1920/${highlights.backgroundImg},
+          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,w_2880/${highlights.backgroundImg} 1.5x,
+          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,w_3840/${highlights.backgroundImg} 2x`"
+          :src="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,w_1920/${highlights.backgroundImg}`"
+          alt="Filia-InSitu-2"
+        />
+      </figure>
       <div class="container">
-        <div class="highlights">
-          <h3>
-            FILIA COMPANY HEADLINE THAT INTRODUCES THE <br />
-            COMPANY AND WHO WE ARE GOES HERE
-          </h3>
-          <div class="highlight">
-            <figure class="highlight__icon">
-              <img
-                src="~/assets/Assets for build/SVG/Filia-Icon-Measure.svg"
-                alt="home-icon"
-              />
-            </figure>
-            <h4>PRODUCT HIGHLIGHT</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit vestib
-              ulum posuere ex nec eros imperdiet, pretium rutrum ex auctor.
-            </p>
-          </div>
-          <div class="highlight">
-            <figure class="highlight__icon">
-              <img
-                src="~/assets/Assets for build/SVG/Filia-Icon-Service.svg"
-                alt="home-icon"
-              />
-            </figure>
-            <h4>PRODUCT HIGHLIGHT</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit vestib
-              ulum posuere ex nec eros imperdiet, pretium rutrum ex auctor.
-            </p>
-          </div>
-          <div class="highlight">
-            <figure class="highlight__icon">
-              <img
-                src="~/assets/Assets for build/SVG/Filia-Icon-10Percent.svg"
-                alt="home-icon"
-              />
-            </figure>
-            <h4>PRODUCT HIGHLIGHT</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit vestib
-              ulum posuere ex nec eros imperdiet, pretium rutrum ex auctor.
-            </p>
-          </div>
-        </div>
+        <img
+          src="~/assets/Assets for build/Filia-Qualifier-Logo-Gradient-RGB.png"
+          alt="Filia Logo"
+        />
+        <h3>{{ about.title }}</h3>
+        <p
+          v-for="paragraph in about.copy"
+          :key="`aboutparagraph${paragraph.index}`"
+        >
+          {{ paragraph }}
+        </p>
       </div>
     </section>
   </main>
@@ -247,15 +167,80 @@
           ],
           buttonLabel: 'Join the solar revolution',
         },
+        intro: {
+          title: 'A New Breed Of Sun Worshipper',
+          subtitle: [
+            'The sun is a true energy hero. Did you know that in only an hour it provides the earth with more energy than we use across the globe for an entire year? And it’s predicted that by 2050 solar energy will be responsible for around 80% of all the power we use.',
+          ],
+          bodyCopy: [
+            'Our blinds come as a complete unit. They do everything you’d expect from a blackout blind, keeping you and your home cool and restful but also make the most out of every drop of wonderful sunshine.',
+            'Our team of installers will quickly and easily fit your blinds then it’s over to you.',
+          ],
+          buttonLabel: 'Join the solar revolution',
+          img: 'v1605977520/Filia/Filia-InSitu-02-Cropped.png',
+        },
+        highlights: {
+          backgroundImg: 'v1605979358/Filia/Filia-InSitu-01-Cropped.png',
+          highlights: [
+            {
+              icon: 'v1605978760/Filia/Filia-Icon-Home.svg',
+              title: 'Hassle free install',
+              copy:
+                'After measuring up, your blinds are fitted quickly and easily by our team of installers',
+            },
+            {
+              icon: 'v1605978752/Filia/Filia-Icon-Renewable.svg',
+              title: 'Generate your own energy',
+              copy:
+                'Feed your energy directly back into your home, out to the grid or power up your battery pack. The choice is yours',
+            },
+            {
+              icon: 'v1605978742/Filia/Filia-Icon-Sun.svg',
+              title: 'Clean and renewable',
+              copy: 'No Co2 emissions and minimal footprint to convert energy',
+            },
+          ],
+        },
+        info: {
+          img: 'v1605980814/Filia/Filia-InSitu-03-Cropped.png',
+          points: [
+            {
+              title: 'Cost effective',
+              copy: 'Versus conventional solar panels, with an instant return',
+            },
+            {
+              title: 'No roof required',
+              copy:
+                '*Energy from *5 windows can provide up to *80% of an average homes energy',
+            },
+            {
+              title: 'No red tape',
+              copy:
+                'No special permissions needed - whether you own or rent your home',
+            },
+            {
+              title: 'We give back',
+              copy:
+                'We pledge 10% of all profits to sustainable and charitable initiatives',
+            },
+          ],
+          buttonLabel: 'Join the solar revolution',
+        },
+        jumbotron: {
+          heading: 'Wind down charge up',
+          copy:
+            'Roll down the blinds and unwind. Filia blinds block 99% of penetrable light, so you can take time for yourself, to kick back and rest easy.',
+          buttonLabel: 'Join the solar revolution',
+        },
+        about: {
+          title: 'Our Story',
+          copy: [
+            'We know that small changes can have a big impact, and now more than ever we all need to make changes to ensure the safety and future of the planet we live on. But access to conventional solar power is limited by big financial out-lays and generally to those who own their own homes. We wanted to bring about new democracy for cleaner energy, a simple cost effective solution, and lasting legacy for our future generations.',
+          ],
+        },
       }
     },
-    mounted() {
-      // * Access ENV with:
-      // process.env.ENV_TEST
-      // or
-      // context.env.ENV_TEST
-      // console.log(process.env.HOST_NAME)
-    },
+    mounted() {},
   }
 </script>
 
@@ -412,10 +397,19 @@
         flex-direction: column;
         padding: 40px 0;
       }
+      &__wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        @include breakpoint(mobile) {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
     }
     .highlight {
       width: 100%;
-      max-width: 200px;
+      max-width: 220px;
       text-align: center;
       padding: 20px;
       margin: 25px;
@@ -425,8 +419,8 @@
         margin: 0;
       }
       &__icon {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         margin: 0 auto 15px auto;
         display: block;
         img {
@@ -435,7 +429,7 @@
           object-fit: contain;
         }
       }
-      h4 {
+      h3 {
         margin-bottom: 20px;
       }
     }
@@ -464,22 +458,32 @@
       h2 {
         margin-bottom: 50px;
       }
-      p,
+      h4 {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      p {
+        display: block;
+        padding-left: 26px;
+      }
       ul {
         margin: 25px 0;
       }
       li {
-        padding: 10px 0;
+        padding: 15px 0;
         border-top: 1px solid $black;
         span {
           display: inline-block;
           // padding: 5px;
-          height: 14px;
-          width: 14px;
+          height: 18px;
+          width: 18px;
           margin-right: 5px;
           svg {
             width: 100%;
           }
+        }
+        &:nth-child(1) {
+          border-top: none;
         }
       }
       a {
@@ -504,7 +508,7 @@
       }
     }
   }
-  .wind-down {
+  .jumbotron {
     width: 100%;
     padding: 30px;
     background: $white;
@@ -578,63 +582,51 @@
       }
     }
   }
-  .filia-highlights {
+  .about {
     width: 100%;
-    padding: 130px 30px;
-    background: $offWhite;
+    height: auto;
     position: relative;
-    @include breakpoint(mobile) {
-      padding: 50px 25px;
+    .background {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.15;
+      }
     }
     .container {
       width: 100%;
+      height: 100%;
       position: relative;
-    }
-    h3 {
-      width: 100%;
-      display: block;
-      text-align: center;
-      @include breakpoint(mobile) {
-        padding-bottom: 25px;
-      }
-    }
-    .highlights {
-      width: 100%;
+      top: 0;
+      left: 0;
+      // background: springgreen;
       z-index: 2;
+      padding: 140px 50px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
-      @include breakpoint(mobile) {
-        flex-direction: column;
-        padding: 40px 0;
+      @include breakpoint(tablet-mobile) {
+        padding: 70px 30px;
+      }
+      img {
+        width: 100%;
+        max-width: 200px;
       }
     }
-    .highlight {
+    h3,
+    p {
       width: 100%;
-      max-width: 200px;
+      max-width: 520px;
       text-align: center;
-      padding: 20px;
-      margin: 25px;
-      color: $black;
-      @include breakpoint(mobile) {
-        padding: 20px;
-        margin: 0;
-      }
-      &__icon {
-        width: 40px;
-        height: 40px;
-        margin: 0 auto 15px auto;
-        display: block;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-        }
-      }
-      h4 {
-        margin-bottom: 20px;
-      }
+      margin-top: 40px;
     }
   }
 </style>

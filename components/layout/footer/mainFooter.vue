@@ -3,7 +3,7 @@
     <section class="top">
       <div class="container">
         <div class="newsletter__wrap">
-          <newsletter />
+          <newsletter :title="newsletter.title" />
         </div>
         <div class="contact__wrap">
           <div class="background">
@@ -11,17 +11,17 @@
             <city class="city" />
           </div>
           <div class="copy">
-            <h3>CONTACT MESSAGE HERE</h3>
-            <p>
-              Lorrem ipsum dolor sit amet, consectetur adipiscing elit. Ve
-              stibulum posuere ex nec eros imperdiet, pretium rutrum ex auctor.
-              Praesent pulvinar felis eget odio vulputate
+            <h3>{{ contact.title }}</h3>
+            <p
+              v-for="paragraph in contact.copy"
+              :key="`contact${paragraph.index}`"
+            >
+              {{ paragraph }}
             </p>
-            <a href="mailto:info@filia.co.uk">info@filia.co.uk</a>
             <div class="socials">
               <a
                 class="social"
-                href="http://"
+                :href="contact.socials.instagram"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -29,7 +29,7 @@
               </a>
               <a
                 class="social"
-                href="http://"
+                :href="contact.socials.facebook"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -58,6 +58,23 @@
 
 <script>
   export default {
+    data() {
+      return {
+        contact: {
+          title: 'Get In Touch',
+          copy: [
+            'For more information or to talk to one of our team, you can find us at info@filia.solar',
+          ],
+          socials: {
+            instagram: 'https://instagram.com',
+            facebook: 'https://facebook.com',
+          },
+        },
+        newsletter: {
+          title: `Join Us And Sign Up To Embrace A New Future You'Ll Be First To Hear About Launches In Your Area`,
+        },
+      }
+    },
     computed: {
       year() {
         return new Date().getFullYear()

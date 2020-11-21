@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h3>SIGN-UP MESSAGE HERE LOREM IPSUM DOLOR SIT AMET LOREM IPSUM</h3>
+    <h3>{{ title }}</h3>
     <form v-on:submit.prevent>
       <!-- name -->
       <input
@@ -36,6 +36,12 @@
   import { validationMixin } from 'vuelidate'
   import { required, minLength, email } from 'vuelidate/lib/validators'
   export default {
+    props: {
+      title: {
+        type: String,
+        default: 'newsletter title',
+      },
+    },
     data() {
       return {
         userEmail: null,
