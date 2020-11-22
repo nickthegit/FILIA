@@ -43,17 +43,7 @@
           intro.buttonLabel
         }}</anchor-button>
       </div>
-      <figure>
-        <img
-          :srcset="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_800/${intro.img},
-          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_1200/${intro.img} 1.5x,
-          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_1600/${intro.img} 2x,
-          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_2000/${intro.img} 2.5x,
-          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_2400/${intro.img} 3x`"
-          :src="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_800/${intro.img}`"
-          alt="Filia-InSitu-1"
-        />
-      </figure>
+      <half-image :img="intro.img" alt="Filia In Situ 1" />
     </section>
     <section class="product-highlights">
       <div class="container">
@@ -87,17 +77,7 @@
       </div>
     </section>
     <section class="info">
-      <figure>
-        <img
-          :srcset="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_800/${info.img},
-          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_1200/${info.img} 1.5x,
-          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_1600/${info.img} 2x,
-          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_2000/${info.img} 2.5x,
-          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_2400/${info.img} 3x`"
-          :src="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_80,w_800/${info.img}`"
-          alt="Filia-InSitu-3"
-        />
-      </figure>
+      <half-image :img="info.img" alt="Filia In Situ 3" />
       <div class="copy">
         <!-- <h2>AN INTRODUCTION HEADLINE TO SOME BULLET POINTS</h2> -->
         <ul>
@@ -162,6 +142,7 @@
   import { gsap } from 'gsap'
   import { SplitText } from 'gsap/SplitText'
   import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
   // // * greensock.com/docs/v3/Installation?checked=core,scrollTrigger,splitText#ZIP
 
   if (process.client) {
@@ -273,9 +254,6 @@
         let tl = await gsap.timeline({
           delay: 0.25,
           ease: 'power2.out',
-          onComplete: () => {
-            gsap.set('body', { position: 'relative' })
-          },
         })
 
         tl.to('.hero .sun', {
@@ -314,7 +292,15 @@
         tl.fromTo(
           '.hero .headline .btn',
           { autoAlpha: 0, y: 50 },
-          { autoAlpha: 1, y: 0, ease: 'power2.out', duration: 0.6 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            ease: 'power2.out',
+            duration: 0.6,
+            onComplete: () => {
+              vm.enterComplete()
+            },
+          },
           '-=0.2'
         )
         tl.pause()
@@ -322,7 +308,6 @@
           let tlLoading = gsap.timeline({
             delay: 0.5,
             onComplete: async () => {
-              console.log('d')
               vm.loading = await false
               await tl.play()
             },
@@ -343,6 +328,56 @@
           )
         })
       },
+      async enterComplete() {
+        gsap.set('body', { position: 'relative' })
+        this.heroScrollAnimations()
+        // this.introScrollAnimations()
+        // this.infoScrollAnimations()
+        this.jumbotronScrollAnimations()
+      },
+      async heroScrollAnimations() {
+        gsap.to('.hero .sun', {
+          scrollTrigger: {
+            trigger: '.hero',
+            start: '80px 0',
+            end: '+=800', // 200px past the start
+            markers: false,
+            scrub: 2,
+            // pin: '.hero .sun',
+          },
+          y: 600,
+        })
+      },
+      introScrollAnimations() {
+        this.parallaxImg('.intro figure img', '.intro figure')
+      },
+      infoScrollAnimations() {
+        this.parallaxImg('.info figure img', '.info figure')
+      },
+      jumbotronScrollAnimations() {
+        gsap.to('.jumbotron .figure-1 svg', {
+          scrollTrigger: {
+            trigger: '.jumbotron',
+            start: '10% bottom',
+            // markers: true,
+            scrub: 1,
+          },
+          y: '30%',
+          ease: 'power2.out',
+        })
+      },
+      parallaxImg(img, trigger) {
+        gsap.to(img, {
+          scrollTrigger: {
+            trigger: trigger,
+            start: '10% bottom',
+            markers: false,
+            scrub: 0.5,
+          },
+          y: '15%',
+          ease: 'power2.out',
+        })
+      },
     },
     async mounted() {
       await gsap.set('body', { position: 'fixed' })
@@ -353,15 +388,9 @@
           autoAlpha: 0,
         }
       )
-      await this.enterAnimation()
-      setTimeout(() => {
-        ScrollTrigger.create({
-          trigger: '.hero',
-          start: 'top center',
-          end: '+=800', // 200px past the start
-          // pin: '.hero .sun',
-        })
-      }, 4000)
+      this.$nextTick(async () => {
+        await this.enterAnimation()
+      })
     },
   }
 </script>
@@ -398,6 +427,7 @@
     background: $warmred;
     color: $vanilla;
     overflow: hidden;
+    z-index: 1;
     section {
       width: 100%;
       margin: 0 auto;
@@ -447,6 +477,7 @@
     display: grid;
     grid-template: auto / 50% 50%;
     background: $offWhite;
+    z-index: 2;
     @include breakpoint(mobile) {
       grid-template: auto auto / 100%;
     }
@@ -476,20 +507,6 @@
         @include breakpoint(mobile) {
           margin-top: 25px;
         }
-      }
-    }
-    figure {
-      grid-row: 1 / 2;
-      grid-column: 2 / 3;
-      @include breakpoint(mobile) {
-        grid-row: 1 / 2;
-        grid-column: 1 / 2;
-        height: 50vh;
-      }
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
       }
     }
   }
@@ -640,20 +657,6 @@
         }
       }
     }
-    figure {
-      grid-row: 1 / 2;
-      grid-column: 1 / 2;
-      @include breakpoint(mobile) {
-        grid-row: 2 / 3;
-        grid-column: 1 / 2;
-        height: 50vh;
-      }
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
   }
   .jumbotron {
     width: 100%;
@@ -708,9 +711,9 @@
       svg {
         height: 160%;
         position: absolute;
-        top: 40%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        bottom: 0;
+        transform: translateX(-50%);
       }
       @include breakpoint(mobile) {
         display: none;
