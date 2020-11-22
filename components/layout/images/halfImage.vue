@@ -40,7 +40,7 @@
             markers: false,
             scrub: 0.5,
           },
-          y: '15%',
+          y: '20%',
           ease: 'power2.out',
         })
       },
@@ -60,13 +60,13 @@
     overflow: hidden;
     position: relative;
     @include breakpoint(mobile) {
-      grid-row: 1 / 2;
+      grid-row: span 1;
       grid-column: 1 / 2;
       height: 50vh;
     }
     img {
       width: 100%;
-      height: 120%;
+      height: 125%;
       object-fit: cover;
       bottom: 0;
       position: absolute;
