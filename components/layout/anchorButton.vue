@@ -1,5 +1,5 @@
 <template>
-  <div :class="theme">
+  <div :class="theme" class="btn">
     <a v-if="type === 'link'" :href="hrefLink"><slot></slot></a>
     <button v-else-if="type === 'button'" @click="clickAction">
       <slot></slot>

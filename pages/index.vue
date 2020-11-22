@@ -1,5 +1,8 @@
 <template>
-  <main>
+  <main id="index-page">
+    <div class="loading" v-if="loading">
+      <Logo class="loading__logo" />
+    </div>
     <article class="hero">
       <section class="headline">
         <h1>{{ hero.headline }}</h1>
@@ -98,7 +101,7 @@
       <div class="copy">
         <!-- <h2>AN INTRODUCTION HEADLINE TO SOME BULLET POINTS</h2> -->
         <ul>
-          <li v-for="point in info.points" :key="`point${point.index}`">
+          <li v-for="(point, index) in info.points" :key="`point${index}`">
             <span><tick /></span>
             <h4>{{ point.title }}</h4>
             <p>{{ point.copy }}</p>
@@ -145,8 +148,8 @@
         />
         <h3>{{ about.title }}</h3>
         <p
-          v-for="paragraph in about.copy"
-          :key="`aboutparagraph${paragraph.index}`"
+          v-for="(paragraph, index) in about.copy"
+          :key="`aboutparagraph${index}`"
         >
           {{ paragraph }}
         </p>
@@ -156,9 +159,19 @@
 </template>
 
 <script>
+  import { gsap } from 'gsap'
+  import { SplitText } from 'gsap/SplitText'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  // // * greensock.com/docs/v3/Installation?checked=core,scrollTrigger,splitText#ZIP
+
+  if (process.client) {
+    gsap.registerPlugin(SplitText)
+    gsap.registerPlugin(ScrollTrigger)
+  }
   export default {
     data() {
       return {
+        loading: true,
         hero: {
           headline: 'Filia. Your Window to Solar Energy.',
           subtitle: [
@@ -240,17 +253,147 @@
         },
       }
     },
-    mounted() {},
+    methods: {
+      async enterAnimation() {
+        let wWidth = await window.innerWidth
+        let vm = await this
+        let hero_h1_lines, hero_h1_words
+        let mySplitText = await new SplitText('.hero .headline h1', {
+          type: 'words,lines',
+          linesClass: 'lines',
+          wordsClass: 'words',
+        })
+
+        hero_h1_lines = await mySplitText.lines
+        hero_h1_words = await mySplitText.words
+        await gsap.set(hero_h1_lines, { overflow: 'hidden' })
+        await gsap.set('.hero .headline h1', { autoAlpha: 1 })
+
+        // * TIMELINE
+        let tl = await gsap.timeline({
+          delay: 0.25,
+          ease: 'power2.out',
+          onComplete: () => {
+            gsap.set('body', { position: 'relative' })
+          },
+        })
+
+        tl.to('.hero .sun', {
+          width: wWidth > 480 ? 390 : 220,
+          duration: 2,
+          onComplete: () => {},
+        })
+        tl.fromTo(
+          '.hero .illustration',
+          { y: 200, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, duration: 1 },
+          '-=0.5'
+        )
+        tl.fromTo(
+          '.mainHeader',
+          { y: -200 },
+          { y: 0, ease: 'power2.out', duration: 1 },
+          '-=0.5'
+        )
+        tl.fromTo(
+          hero_h1_words,
+          { y: -70 },
+          {
+            y: 0,
+            ease: 'power2.out',
+            duration: 0.5,
+          },
+          '-=0.5'
+        )
+        tl.fromTo(
+          '.hero .headline p',
+          { autoAlpha: 0, y: 50 },
+          { autoAlpha: 1, y: 0, stagger: 0.2, ease: 'power2.out', duration: 0.5 },
+          '-=0.25'
+        )
+        tl.fromTo(
+          '.hero .headline .btn',
+          { autoAlpha: 0, y: 50 },
+          { autoAlpha: 1, y: 0, ease: 'power2.out', duration: 0.6 },
+          '-=0.2'
+        )
+        tl.pause()
+        this.$nextTick(async () => {
+          let tlLoading = gsap.timeline({
+            delay: 0.5,
+            onComplete: async () => {
+              console.log('d')
+              vm.loading = await false
+              await tl.play()
+            },
+          })
+          tlLoading.fromTo(
+            '.loading__logo',
+            { autoAlpha: 0 },
+            { autoAlpha: 1, duration: 1 }
+          )
+          tlLoading.to(
+            '.loading',
+            {
+              autoAlpha: 0,
+              duration: 1,
+              ease: 'power2.out',
+            },
+            '+=1'
+          )
+        })
+      },
+    },
+    async mounted() {
+      await gsap.set('body', { position: 'fixed' })
+      await gsap.set('.hero .sun', { width: '250%' })
+      await gsap.set(
+        ['.hero .illustration', '.hero .headline h1', '.loading__logo'],
+        {
+          autoAlpha: 0,
+        }
+      )
+      await this.enterAnimation()
+      setTimeout(() => {
+        ScrollTrigger.create({
+          trigger: '.hero',
+          start: 'top center',
+          end: '+=800', // 200px past the start
+          // pin: '.hero .sun',
+        })
+      }, 4000)
+    },
   }
 </script>
 
 <style lang="scss" scoped>
+  .loading {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999999999;
+    background: $warmred;
+    &__logo {
+      width: 80%;
+      max-width: 400px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
+  }
   main {
     min-height: 200vh;
     width: 100%;
+    position: relative;
+    top: 0;
   }
   .hero {
     width: 100%;
+    min-height: 100vh;
     position: relative;
     background: $warmred;
     color: $vanilla;
@@ -266,10 +409,14 @@
       max-width: 600px;
       padding: 30px;
       text-align: center;
-
+      margin-top: 130px;
       h1,
       p {
         margin-bottom: 30px;
+      }
+      p {
+        display: block;
+        overflow: hidden;
       }
     }
     .illustration {
@@ -284,7 +431,7 @@
       position: absolute;
       z-index: 1;
       width: 390px;
-      top: 30%;
+      top: 40%;
       left: 47%;
       transform: translate(-50%, -50%) rotate(180deg);
       @include breakpoint(mobile) {

@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="mainHeader">
     <section id="brand" @click="$store.dispatch('setNavPayload', false)">
       <nuxt-link to="/">
         <Logo />
@@ -36,7 +36,7 @@
 
 <style lang="scss" scoped>
   header {
-    position: relative;
+    position: absolute;
     z-index: 999999;
     top: 0;
     left: 0;
@@ -72,21 +72,30 @@
   .nav_mobile {
     @include breakpoint(mobile) {
       width: 100%;
-      height: 100%;
+      height: 100vh;
       position: fixed;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       background: $primary;
+      top: 0;
+      left: 0;
+      transform: translateY(-101%);
+      transition: transform 0.3s ease-out;
+      z-index: 5;
+    }
+  }
+  .navOpen {
+    .nav_mobile {
+      transform: translateY(0);
     }
   }
   .navOpen {
     #mainNav {
-      z-index: 5;
     }
     .menu-btn {
-      color: $white;
+      color: $vanilla;
     }
   }
 </style>

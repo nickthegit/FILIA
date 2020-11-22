@@ -32,7 +32,7 @@
   $hamburger-layer-color: $vanilla;
   $hamburger-layer-border-radius: 0;
   $hamburger-hover-opacity: 1;
-  $hamburger-active-layer-color: $white !default;
+  $hamburger-active-layer-color: $vanilla !default;
   $hamburger-active-hover-opacity: $hamburger-hover-opacity !default;
   @import '@/assets/scss/hamburgers/hamburgers.scss';
   button {
