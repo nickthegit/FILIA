@@ -27,7 +27,7 @@
         required: true,
       },
       alt: {
-        ype: String,
+        type: String,
         default: 'Filia In Situ',
       },
     },
@@ -56,7 +56,7 @@
 <style lang="scss" scoped>
   figure {
     grid-row: 1 / 2;
-    grid-column: 2 / 3;
+    grid-column: span 1;
     overflow: hidden;
     position: relative;
     @include breakpoint(mobile) {
