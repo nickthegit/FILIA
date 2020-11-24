@@ -25,20 +25,20 @@
     </article>
     <section class="intro">
       <div class="copy">
-        <h2>{{ intro.title }}</h2>
-        <p
+        <headline-2>{{ intro.title }}</headline-2>
+        <paragraph
           v-for="(paragraph, index) in intro.subtitle"
           :key="`introsubtitle${index}`"
         >
           {{ paragraph }}
-        </p>
-        <h3>HOW IT WORKS</h3>
-        <p
+        </paragraph>
+        <headline-3>HOW IT WORKS</headline-3>
+        <paragraph
           v-for="(paragraph, index) in intro.bodyCopy"
           :key="`introbodycopy${index}`"
         >
           {{ paragraph }}
-        </p>
+        </paragraph>
         <anchor-button type="link" hrefLink="#newsletter" theme="orange">{{
           intro.buttonLabel
         }}</anchor-button>
@@ -69,8 +69,8 @@
                   alt="highlight-icon"
                 />
               </figure>
-              <h3>{{ highlight.title }}</h3>
-              <p>{{ highlight.copy }}</p>
+              <headline-3>{{ highlight.title }}</headline-3>
+              <paragraph>{{ highlight.copy }}</paragraph>
             </div>
           </div>
         </div>
@@ -83,8 +83,8 @@
         <ul>
           <li v-for="(point, index) in info.points" :key="`point${index}`">
             <span><tick /></span>
-            <h4>{{ point.title }}</h4>
-            <p>{{ point.copy }}</p>
+            <headline-4>{{ point.title }}</headline-4>
+            <paragraph>{{ point.copy }}</paragraph>
           </li>
         </ul>
         <anchor-button type="link" hrefLink="#newsletter" theme="orange">{{
@@ -95,8 +95,8 @@
     <section class="jumbotron">
       <div class="container">
         <div class="copy">
-          <h2>{{ jumbotron.heading }}</h2>
-          <p>{{ jumbotron.copy }}</p>
+          <headline-2>{{ jumbotron.heading }}</headline-2>
+          <paragraph>{{ jumbotron.copy }}</paragraph>
           <anchor-button type="link" hrefLink="#newsletter" theme="vanilla">{{
             jumbotron.buttonLabel
           }}</anchor-button>
@@ -126,13 +126,13 @@
           src="~/assets/Assets for build/Filia-Qualifier-Logo-Gradient-RGB.png"
           alt="Filia Logo"
         />
-        <h3>{{ about.title }}</h3>
-        <p
+        <headline-3>{{ about.title }}</headline-3>
+        <paragraph
           v-for="(paragraph, index) in about.copy"
           :key="`aboutparagraph${index}`"
         >
           {{ paragraph }}
-        </p>
+        </paragraph>
       </div>
     </section>
   </main>
@@ -142,6 +142,7 @@
   import { gsap } from 'gsap'
   import { SplitText } from 'gsap/SplitText'
   import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  import Headline2 from '~/components/layout/text/headline2.vue'
 
   // // * greensock.com/docs/v3/Installation?checked=core,scrollTrigger,splitText#ZIP
 
@@ -150,6 +151,7 @@
     gsap.registerPlugin(ScrollTrigger)
   }
   export default {
+    components: { Headline2 },
     data() {
       return {
         loading: true,
@@ -252,7 +254,7 @@
 
         // * TIMELINE
         let tl = await gsap.timeline({
-          delay: 0.25,
+          // delay: 0.25,
           ease: 'power2.out',
         })
 
@@ -306,7 +308,7 @@
         tl.pause()
         this.$nextTick(async () => {
           let tlLoading = gsap.timeline({
-            delay: 0.5,
+            delay: 0.25,
             onComplete: async () => {
               vm.loading = await false
               await tl.play()

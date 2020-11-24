@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h3>{{ title }}</h3>
+    <headline-3>{{ title }}</headline-3>
     <form v-on:submit.prevent>
       <!-- name -->
       <input
@@ -26,7 +26,14 @@
         :clickAction="submitForm"
         >Subscribe</anchor-button
       >
-      <small>Yes I’d like to receive news and updates from Filia</small>
+      <small>
+        <input type="checkbox" name="gdpr" id="gdpr" /> Yes I’d like to receive
+        news and updates from Filia</small
+      >
+      <small
+        >To unsubscribe at any time Contact Us For more info see our Privacy
+        Policy</small
+      >
     </form>
   </section>
 </template>

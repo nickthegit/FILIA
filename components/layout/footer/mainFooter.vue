@@ -11,13 +11,13 @@
             <city class="city" />
           </div>
           <div class="copy">
-            <h3>{{ contact.title }}</h3>
-            <p
+            <headline-3>{{ contact.title }}</headline-3>
+            <paragraph
               v-for="paragraph in contact.copy"
               :key="`contact${paragraph.index}`"
             >
               {{ paragraph }}
-            </p>
+            </paragraph>
             <div class="socials">
               <a
                 class="social"
