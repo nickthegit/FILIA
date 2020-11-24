@@ -27,13 +27,13 @@
         >Subscribe</anchor-button
       >
       <small>
-        <input type="checkbox" name="gdpr" id="gdpr" /> Yes I’d like to receive
-        news and updates from Filia</small
+        <input type="checkbox" name="gdpr" id="gdpr" v-model="gdpr" /> Yes I’d
+        like to receive news and updates from Fili {{ gdpr }}</small
       >
       <small
-        >To unsubscribe at any time Contact Us For more info see our Privacy
-        Policy</small
-      >
+        >To unsubscribe at any time Contact Us For more info see our
+        <nuxt-link to="/privacy-policy">Privacy Policy</nuxt-link>
+      </small>
     </form>
   </section>
 </template>
@@ -53,6 +53,7 @@
       return {
         userEmail: null,
         userName: null,
+        gdpr: false,
         error: false,
         errorMsg: null,
         validateErrors: {
@@ -74,59 +75,66 @@
         required,
         email,
       },
+      gdpr: {},
     },
     methods: {
       async submitForm() {
         this.nameError = await false
         this.emailError = await false
-        if (!this.$v.$invalid) {
-          // * VALID
-          this.status = await 'pending'
-          this.$toast.show('loading')
-          await subscribe({
-            email: this.userEmail,
-            uID: process.env.MC_UID,
-            audienceID: process.env.MC_AUDIENCE_ID,
-            listName: process.env.MC_LIST_NAME,
-            customFields: {
-              FNAME: this.userName,
-            },
-          })
-            .then((result) => {
-              this.status = 'success'
-              this.$toast.success(`Success! ${result.message}`)
-              console.log(result)
+        if (this.gdpr) {
+          if (!this.$v.$invalid) {
+            // * VALID
+            this.status = await 'pending'
+            this.$toast.show('loading')
+            await subscribe({
+              email: this.userEmail,
+              uID: process.env.MC_UID,
+              audienceID: process.env.MC_AUDIENCE_ID,
+              listName: process.env.MC_LIST_NAME,
+              customFields: {
+                FNAME: this.userName,
+              },
             })
-            .catch((error) => {
-              this.status = 'error'
-              this.$toast.error(`${error}`, { duration: 5000 })
-              console.error(error)
-            })
-          console.log('VALID', this.$v)
+              .then((result) => {
+                this.status = 'success'
+                this.$toast.success(`Success! ${result.message}`)
+                console.log(result)
+              })
+              .catch((error) => {
+                this.status = 'error'
+                this.$toast.error(`${error}`, { duration: 5000 })
+                console.error(error)
+              })
+            console.log('VALID', this.$v)
+          } else {
+            // * INVALID
+            // nothing filled in
+            !this.$v.$error
+              ? this.$toast.error(`Please fill out ALL fields.`, {
+                  duration: 5000,
+                })
+              : ''
+            !this.$v.userEmail.required
+              ? this.$toast.error(`Email is required.`, {
+                  duration: 5000,
+                })
+              : ''
+            !this.$v.userEmail.email
+              ? this.$toast.error(`Must be an email.`, {
+                  duration: 5000,
+                })
+              : ''
+            !this.$v.userName.required
+              ? this.$toast.error(`Name is required.`, {
+                  duration: 5000,
+                })
+              : ''
+            console.log('INVALID', this.$v)
+          }
         } else {
-          // * INVALID
-          // nothing filled in
-          !this.$v.$error
-            ? this.$toast.error(`Please fill out ALL fields.`, {
-                duration: 5000,
-              })
-            : ''
-          !this.$v.userEmail.required
-            ? this.$toast.error(`Email is required.`, {
-                duration: 5000,
-              })
-            : ''
-          !this.$v.userEmail.email
-            ? this.$toast.error(`Must be an email.`, {
-                duration: 5000,
-              })
-            : ''
-          !this.$v.userName.required
-            ? this.$toast.error(`Name is required.`, {
-                duration: 5000,
-              })
-            : ''
-          console.log('INVALID', this.$v)
+          this.$toast.error(`You must agree and check the box`, {
+            duration: 5000,
+          })
         }
       },
     },
@@ -177,5 +185,8 @@
   }
   small {
     margin-top: 10px;
+  }
+  a {
+    color: $white;
   }
 </style>

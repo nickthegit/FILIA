@@ -19,8 +19,7 @@ export default {
     meta: [
       ...createSEOMeta({
         title: 'Filia',
-        description:
-          'insert description here',
+        description: 'Whether heading up and out to work or down for a siesta, dropping your Filia blind means you can rest easy, knowing you’re always generating clean renewable energy for your home',
         image: '[Insert_NarutoDose_Image_URL]',
         url: process.env.HOST_NAME,
       }),

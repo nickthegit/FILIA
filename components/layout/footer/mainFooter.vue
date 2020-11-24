@@ -43,11 +43,11 @@
     <section class="bottom">
       <ul class="terms">
         <li>
-          <nuxt-link to="/">Privacy Policy</nuxt-link>
+          <nuxt-link to="/privacy-policy">Privacy Policy</nuxt-link>
         </li>
-        <li>
+        <!-- <li>
           <nuxt-link to="/">Terms of Service</nuxt-link>
-        </li>
+        </li> -->
       </ul>
       <p>© Filia {{ year }}, All rights reserved.</p>
       <Logo theme="black" />
