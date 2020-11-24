@@ -341,7 +341,7 @@
         gsap.to('.hero .sun', {
           scrollTrigger: {
             trigger: '.hero',
-            start: '80px 0',
+            start: '40px 0',
             end: '+=800', // 200px past the start
             markers: false,
             scrub: 1.5,
