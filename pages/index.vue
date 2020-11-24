@@ -344,10 +344,10 @@
             start: '80px 0',
             end: '+=800', // 200px past the start
             markers: false,
-            scrub: 2,
+            scrub: 1.5,
             // pin: '.hero .sun',
           },
-          y: 600,
+          y: 350,
         })
       },
       introScrollAnimations() {
