@@ -1,5 +1,5 @@
 <template>
-  <div :class="theme" class="btn">
+  <div :class="[theme, forNav ? 'nav' : '']" class="btn">
     <a v-if="type === 'link'" :href="hrefLink"><slot></slot></a>
     <button v-else-if="type === 'button'" @click="clickAction">
       <slot></slot>
@@ -25,6 +25,10 @@
         type: String,
         default: 'vanilla', // vanilla / orange / white
       },
+      forNav: {
+        type: Boolean,
+        default: false,
+      },
     },
   }
 </script>
@@ -35,14 +39,15 @@
   }
   a,
   button {
-    padding: 7.5px 30px;
-    border-radius: 20px;
+    padding: 12.5px 30px;
+    border-radius: 25px;
     background: $vanilla;
     color: $warmred;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     text-decoration: none;
     font-size: 15px;
-    padding-bottom: 8px;
+    // padding-bottom: 8px;
     border: none;
     cursor: pointer;
     &:hover {
@@ -67,7 +72,14 @@
     a,
     button {
       background: $white;
-      color: $pacific;
+      color: $cerulean;
+    }
+  }
+  .nav {
+    @include breakpoint(mobile) {
+      a {
+        font-size: 22px;
+      }
     }
   }
 </style>

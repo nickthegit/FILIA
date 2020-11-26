@@ -40,4 +40,7 @@
   .white {
     fill: $white;
   }
+  .warmred {
+    fill: $warmred;
+  }
 </style>

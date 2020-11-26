@@ -152,7 +152,7 @@
     align-items: stretch;
     justify-content: center;
     color: $white;
-    background: $pacific;
+    background: $cerulean;
     @include breakpoint(mobile) {
       padding: 50px 30px;
     }

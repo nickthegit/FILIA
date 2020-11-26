@@ -106,7 +106,10 @@
             <building-a />
           </figure>
           <figure class="figure-2">
-            <building-b />
+            <img
+              src="~/assets/Assets for build/SVG/Filia-Illustration-Building-B.png"
+              alt=""
+            />
           </figure>
         </div>
       </div>
@@ -156,7 +159,7 @@
       return {
         loading: true,
         hero: {
-          headline: 'Filia. Your Window to Solar Energy.',
+          headline: 'Your Window to Solar Energy.',
           subtitle: [
             'We’re Filia. We bring solar energy to every home by integrating solar technology into the fabric of our blackout blinds. Meaning every window can embrace the limitless power of the sun.',
             'Whether heading up and out to work or down for a siesta, dropping your Filia blind means you can rest easy, knowing you’re always generating clean renewable energy for your home.',
@@ -173,10 +176,10 @@
             'Our team of installers will quickly and easily fit your blinds then it’s over to you.',
           ],
           buttonLabel: 'Join the solar revolution',
-          img: 'v1605989375/Filia/Filia-InSitu-02_v2.png',
+          img: 'v1606421498/Filia/Filia-InSitu-04.png',
         },
         highlights: {
-          backgroundImg: 'v1605979358/Filia/Filia-InSitu-01-Cropped.png',
+          backgroundImg: 'v1606421504/Filia/Filia-InSitu-01-ExposureA.png',
           highlights: [
             {
               icon: 'v1605978760/Filia/Filia-Icon-Home.svg',
@@ -198,7 +201,7 @@
           ],
         },
         info: {
-          img: 'v1605989369/Filia/Filia-InSitu-03_v2.png',
+          img: 'v1606421505/Filia/Filia-InSitu-05.png',
           points: [
             {
               title: 'Cost effective',
@@ -347,7 +350,7 @@
             scrub: 1.5,
             // pin: '.hero .sun',
           },
-          y: 350,
+          y: 320,
         })
       },
       introScrollAnimations() {
@@ -438,7 +441,7 @@
       overflow: hidden;
     }
     .headline {
-      max-width: 600px;
+      max-width: 820px;
       padding: 30px;
       text-align: center;
       margin-top: 130px;
@@ -667,6 +670,7 @@
     position: relative;
     @include breakpoint(mobile) {
       padding: 25px;
+      text-align: center;
     }
     .container {
       width: 100%;
@@ -726,6 +730,7 @@
       display: none;
       margin: 0 auto;
       padding: 40px;
+      img,
       svg {
         width: 100%;
       }

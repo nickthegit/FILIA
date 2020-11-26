@@ -29,11 +29,11 @@
               </a>
               <a
                 class="social"
-                :href="contact.socials.facebook"
+                :href="contact.socials.twitter"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <facebook />
+                <twitter />
               </a>
             </div>
           </div>
@@ -50,7 +50,7 @@
         </li> -->
       </ul>
       <p>© Filia {{ year }}, All rights reserved.</p>
-      <Logo theme="black" />
+      <Logo theme="warmred" />
     </section>
     <!-- <section>© company name {{ year }}, All rights reserved.</section> -->
   </footer>
@@ -66,8 +66,9 @@
             'For more information or to talk to one of our team, you can find us at info@filia.solar',
           ],
           socials: {
-            instagram: 'https://instagram.com',
+            instagram: 'https://instagram.com/filia.solar',
             facebook: 'https://facebook.com',
+            twitter: 'https://twitter.com/@FiliaSolar',
           },
         },
         newsletter: {

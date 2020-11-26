@@ -5,6 +5,7 @@
       hrefLink="#newsletter"
       theme="vanilla"
       class="nav-cta"
+      :forNav="true"
       >Join the solar revolution</anchor-button
     >
     <nuxt-link to="#contact">Contact</nuxt-link>
@@ -29,6 +30,7 @@
       @include breakpoint(mobile) {
         margin-right: 0;
         margin-bottom: 20px;
+
         a {
           font-size: 20px;
         }
@@ -49,9 +51,20 @@
       @include breakpoint(mobile) {
         margin-right: 0;
         margin-bottom: 15px;
-        font-size: 18px;
+        font-size: 22px;
+        margin-top: 20px;
       }
     }
+    .nav_mobile {
+      .nav-cta {
+        @include breakpoint(mobile) {
+          a {
+            font-size: 22px;
+          }
+        }
+      }
+    }
+
     // @include breakpoint(mobile) {
     //   width: 100%;
     //   height: 100vh;

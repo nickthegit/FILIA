@@ -95,7 +95,7 @@
         <use overflow="visible" xlink:href="#SVGID_17_" />
       </clipPath>
       <path
-        d="M85.7 292.3s-4.8-3.9-5-7.8c-.2-3.9 2.2-4 2.2-4s-.5-3.6 3.2-3.6c0 0 .8-4.3 4.3-.9l3.6 3.4s.8-3.2 3.1.6.9 11.5.9 11.5l-1.8 5.8-7.6-.1-2.9-4.9z"
+        d="M85.7 292.3s-4.8-3.9-5-7.8 2.2-4 2.2-4-.5-3.6 3.2-3.6c0 0 .8-4.3 4.3-.9l3.6 3.4s.8-3.2 3.1.6.9 11.5.9 11.5l-1.8 5.8-7.6-.1-2.9-4.9z"
         class="st13"
       />
     </g>
@@ -112,11 +112,11 @@
       </clipPath>
       <linearGradient
         id="SVGID_21_"
-        x1="-4453.8345"
-        x2="-4453.8345"
-        y1="-5096.9614"
-        y2="-4700.7012"
-        gradientTransform="matrix(-1 0 0 1 -4274.4253 5481.1108)"
+        x1="-4353.8252"
+        x2="-4353.8252"
+        y1="5674.9106"
+        y2="5278.7109"
+        gradientTransform="rotate(180 -2087.21265 3029.5554)"
         gradientUnits="userSpaceOnUse"
       >
         <stop offset=".1977" stop-color="#fc3" />
@@ -211,148 +211,148 @@
 </script>
 
 <style lang="scss" scoped>
-  .st0 {
-    fill: #f45e39;
-    stroke: #fc3;
-    stroke-width: 4.8043;
-    stroke-miterlimit: 10;
-  }
-  .st1 {
-    clip-path: url(#SVGID_2_);
-  }
-  .st2 {
-    fill: #fafac6;
-  }
-  .st3 {
-    fill: #f45e39;
-  }
-  .st4 {
-    clip-path: url(#SVGID_4_);
-  }
-  .st5 {
-    fill: #f45e39;
-    stroke: #fafac6;
-    stroke-width: 2.9085;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .st5,
-  .st6,
-  .st7 {
-    stroke-miterlimit: 10;
-  }
-  .st6 {
-    fill: #fafac6;
-    stroke: #fafac6;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 2.9085;
-  }
-  .st7 {
-    clip-path: url(#SVGID_6_);
-    stroke-width: 3.9626;
-  }
-  .st7,
-  .st8,
-  .st9 {
-    fill: none;
-    stroke: #fafac6;
-    stroke-linejoin: round;
-  }
-  .st8 {
-    stroke-width: 3.9626;
-    stroke-miterlimit: 10;
-    clip-path: url(#SVGID_8_);
-  }
-  .st9 {
-    clip-path: url(#SVGID_10_);
-    stroke-linecap: round;
-  }
-  .st10,
-  .st11,
-  .st12,
-  .st9 {
-    stroke-width: 3.9626;
-    stroke-miterlimit: 10;
-  }
-  .st10 {
-    stroke-linejoin: round;
-    clip-path: url(#SVGID_12_);
-    fill: none;
-    stroke: #fafac6;
-  }
-  .st11,
-  .st12 {
-    clip-path: url(#SVGID_14_);
-    fill: #fafac6;
-    stroke: #f45e39;
-  }
-  .st12 {
-    clip-path: url(#SVGID_16_);
-    fill: none;
-    stroke: #fafac6;
-    stroke-linejoin: round;
-  }
-  .st13 {
-    clip-path: url(#SVGID_18_);
-    fill: #fafac6;
-  }
-  .st14,
-  .st15 {
-    fill: none;
-    stroke: #fc3;
-    stroke-width: 4.8043;
-    stroke-miterlimit: 10;
-  }
-  .st15 {
-    stroke: #fafac6;
-    stroke-width: 3.9626;
-    stroke-linejoin: round;
-  }
-  .st16 {
-    opacity: 0.5;
-    clip-path: url(#SVGID_20_);
-    fill: url(#SVGID_21_);
-    enable-background: new;
-  }
-  .st17 {
-    clip-path: url(#SVGID_23_);
-  }
-  .st18,
-  .st19 {
-    fill: #fafac6;
-    stroke: #fafac6;
-    stroke-width: 4.1153;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-miterlimit: 10;
-  }
-  .st19 {
-    fill: #f45e39;
-  }
-  .st20 {
-    clip-path: url(#SVGID_25_);
-  }
-  .st21 {
-    fill: none;
-    stroke: #fafac6;
-    stroke-width: 3.4196;
-    stroke-miterlimit: 10;
-  }
-  .st22 {
-    clip-path: url(#SVGID_27_);
-  }
-  .st23 {
-    clip-path: url(#SVGID_29_);
-  }
-  .st24,
-  .st25 {
-    fill: #fafac6;
-    stroke: #fafac6;
-    stroke-width: 3.4159;
-    stroke-miterlimit: 10;
-  }
-  .st25 {
-    fill: none;
-  }
+  // .st0 {
+  //   fill: #f45e39;
+  //   stroke: #fc3;
+  //   stroke-width: 4.8043;
+  //   stroke-miterlimit: 10;
+  // }
+  // .st1 {
+  //   clip-path: url(#SVGID_2_);
+  // }
+  // .st2 {
+  //   fill: #fafac6;
+  // }
+  // .st3 {
+  //   fill: #f45e39;
+  // }
+  // .st4 {
+  //   clip-path: url(#SVGID_4_);
+  // }
+  // .st5 {
+  //   fill: #f45e39;
+  //   stroke: #fafac6;
+  //   stroke-width: 2.9085;
+  //   stroke-linecap: round;
+  //   stroke-linejoin: round;
+  // }
+  // .st5,
+  // .st6,
+  // .st7 {
+  //   stroke-miterlimit: 10;
+  // }
+  // .st6 {
+  //   fill: #fafac6;
+  //   stroke: #fafac6;
+  //   stroke-linecap: round;
+  //   stroke-linejoin: round;
+  //   stroke-width: 2.9085;
+  // }
+  // .st7 {
+  //   clip-path: url(#SVGID_6_);
+  //   stroke-width: 3.9626;
+  // }
+  // .st7,
+  // .st8,
+  // .st9 {
+  //   fill: none;
+  //   stroke: #fafac6;
+  //   stroke-linejoin: round;
+  // }
+  // .st8 {
+  //   stroke-width: 3.9626;
+  //   stroke-miterlimit: 10;
+  //   clip-path: url(#SVGID_8_);
+  // }
+  // .st9 {
+  //   clip-path: url(#SVGID_10_);
+  //   stroke-linecap: round;
+  // }
+  // .st10,
+  // .st11,
+  // .st12,
+  // .st9 {
+  //   stroke-width: 3.9626;
+  //   stroke-miterlimit: 10;
+  // }
+  // .st10 {
+  //   stroke-linejoin: round;
+  //   clip-path: url(#SVGID_12_);
+  //   fill: none;
+  //   stroke: #fafac6;
+  // }
+  // .st11,
+  // .st12 {
+  //   clip-path: url(#SVGID_14_);
+  //   fill: #fafac6;
+  //   stroke: #f45e39;
+  // }
+  // .st12 {
+  //   clip-path: url(#SVGID_16_);
+  //   fill: none;
+  //   stroke: #fafac6;
+  //   stroke-linejoin: round;
+  // }
+  // .st13 {
+  //   clip-path: url(#SVGID_18_);
+  //   fill: #fafac6;
+  // }
+  // .st14,
+  // .st15 {
+  //   fill: none;
+  //   stroke: #fc3;
+  //   stroke-width: 4.8043;
+  //   stroke-miterlimit: 10;
+  // }
+  // .st15 {
+  //   stroke: #fafac6;
+  //   stroke-width: 3.9626;
+  //   stroke-linejoin: round;
+  // }
+  // .st16 {
+  //   opacity: 0.5;
+  //   clip-path: url(#SVGID_20_);
+  //   fill: url(#SVGID_21_);
+  //   enable-background: new;
+  // }
+  // .st17 {
+  //   clip-path: url(#SVGID_23_);
+  // }
+  // .st18,
+  // .st19 {
+  //   fill: #fafac6;
+  //   stroke: #fafac6;
+  //   stroke-width: 4.1153;
+  //   stroke-linecap: round;
+  //   stroke-linejoin: round;
+  //   stroke-miterlimit: 10;
+  // }
+  // .st19 {
+  //   fill: #f45e39;
+  // }
+  // .st20 {
+  //   clip-path: url(#SVGID_25_);
+  // }
+  // .st21 {
+  //   fill: none;
+  //   stroke: #fafac6;
+  //   stroke-width: 3.4196;
+  //   stroke-miterlimit: 10;
+  // }
+  // .st22 {
+  //   clip-path: url(#SVGID_27_);
+  // }
+  // .st23 {
+  //   clip-path: url(#SVGID_29_);
+  // }
+  // .st24,
+  // .st25 {
+  //   fill: #fafac6;
+  //   stroke: #fafac6;
+  //   stroke-width: 3.4159;
+  //   stroke-miterlimit: 10;
+  // }
+  // .st25 {
+  //   fill: none;
+  // }
 </style>
