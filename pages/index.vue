@@ -25,6 +25,4 @@
   .holding-logo {
     width: 40%;
   }
-  .svg {
-  }
 </style>
