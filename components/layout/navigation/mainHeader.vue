@@ -40,8 +40,6 @@
         'scroll',
         _.throttle(function () {
           let st = window.pageYOffset || document.documentElement.scrollTop
-          // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
-          console.log(st)
           if (st === 0) {
             vm.scrollUp = false
             vm.scrollTop = true

@@ -104,5 +104,6 @@ export default {
   */
   build: {
     transpile: ['gsap'],
+    analyze: false,
   },
 }
