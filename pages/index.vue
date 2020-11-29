@@ -147,7 +147,7 @@
   import { ScrollTrigger } from 'gsap/ScrollTrigger'
   import Headline2 from '~/components/layout/text/headline2.vue'
 
-  // // * greensock.com/docs/v3/Installation?checked=core,scrollTrigger,splitText#ZIP
+  import { groq } from '@nuxtjs/sanity'
 
   if (process.client) {
     gsap.registerPlugin(SplitText)
@@ -155,6 +155,13 @@
   }
   export default {
     components: { Headline2 },
+    async asyncData(context) {
+      const query = await groq`*[_type == "landingPage" && _id == '${context.app.i18n.locale}']`
+      const result = await context.$sanity.fetch(query)
+      return {
+        test: result[0],
+      }
+    },
     data() {
       return {
         loading: true,
@@ -385,6 +392,8 @@
       },
     },
     async mounted() {
+      // console.log(this)
+      console.log('TEST', this.test)
       await gsap.set('body', { position: 'fixed' })
       await gsap.set('.hero .sun', { width: '250%' })
       await gsap.set(

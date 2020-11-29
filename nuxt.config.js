@@ -64,7 +64,16 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/sitemap',
     '@nuxtjs/toast',
+    '@nuxtjs/sanity',
+    'nuxt-i18n',
   ],
+  i18n: {
+    locales: ['en', 'es'],
+    defaultLocale: 'en',
+  },
+  sanity: {
+    // module options
+  },
   toast: {
     position: 'bottom-left',
     duration: 3000,

@@ -12,12 +12,14 @@
     "@input-output-hk/mailchimp-subscribe": "^0.3.0",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/pwa": "^3.2.2",
+    "@nuxtjs/sanity": "^0.4.2",
     "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/style-resources": "^1.0.0",
     "@nuxtjs/toast": "^3.3.1",
     "gsap": "file:gsap-bonus.tgz",
     "lodash": "^4.17.20",
     "nuxt": "^2.14.6",
+    "nuxt-i18n": "^6.15.4",
     "vuelidate": "^0.7.6"
   },
   "devDependencies": {
