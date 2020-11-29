@@ -52,7 +52,7 @@
         margin-right: 0;
         margin-bottom: 15px;
         font-size: 22px;
-        margin-top: 20px;
+        margin-top: 0px;
       }
     }
     .nav_mobile {

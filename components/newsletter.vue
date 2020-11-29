@@ -28,10 +28,11 @@
       >
       <small>
         <input type="checkbox" name="gdpr" id="gdpr" v-model="gdpr" /> Yes I’d
-        like to receive news and updates from Fili {{ gdpr }}</small
+        like to receive news and updates from Fili.</small
       >
       <small
-        >To unsubscribe at any time Contact Us For more info see our
+        >To unsubscribe at any time Contact Us.<br />
+        For more info see our
         <nuxt-link to="/privacy-policy">Privacy Policy</nuxt-link>
       </small>
     </form>

@@ -159,7 +159,7 @@
       return {
         loading: true,
         hero: {
-          headline: 'Your Window to Solar Energy.',
+          headline: 'Filia. Your Window to Solar Energy.',
           subtitle: [
             'We’re Filia. We bring solar energy to every home by integrating solar technology into the fabric of our blackout blinds. Meaning every window can embrace the limitless power of the sun.',
             'Whether heading up and out to work or down for a siesta, dropping your Filia blind means you can rest easy, knowing you’re always generating clean renewable energy for your home.',
@@ -226,7 +226,7 @@
           buttonLabel: 'Join the solar revolution',
         },
         jumbotron: {
-          heading: 'Wind down charge up',
+          heading: 'Wind down. Charge up.',
           copy:
             'Roll down the blinds and unwind. Filia blinds block 99% of penetrable light, so you can take time for yourself, to kick back and rest easy.',
           buttonLabel: 'Join the solar revolution',
@@ -262,7 +262,7 @@
         })
 
         tl.to('.hero .sun', {
-          width: wWidth > 480 ? 390 : 220,
+          width: wWidth > 480 ? 480 : 280,
           duration: 2,
           onComplete: () => {},
         })
@@ -350,7 +350,7 @@
             scrub: 1.5,
             // pin: '.hero .sun',
           },
-          y: 320,
+          y: 280,
         })
       },
       introScrollAnimations() {
@@ -465,7 +465,7 @@
     .sun {
       position: absolute;
       z-index: 1;
-      width: 390px;
+      width: 480px;
       top: 40%;
       left: 47%;
       transform: translate(-50%, -50%) rotate(180deg);
@@ -491,7 +491,7 @@
     // }
     .copy {
       width: 100%;
-      max-width: 600px;
+      max-width: 800px;
       padding: 70px;
       justify-self: end;
       grid-row: 1 / 2;
@@ -614,7 +614,7 @@
     }
     .copy {
       width: 100%;
-      max-width: 600px;
+      max-width: 800px;
       padding: 70px;
       justify-self: start;
       grid-row: 1 / 2;

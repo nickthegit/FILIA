@@ -1,5 +1,8 @@
 <template>
-  <header class="mainHeader">
+  <header
+    class="mainHeader"
+    :class="[scrollUp ? 'scrollUp' : '', scrollTop ? 'scrollTop' : '']"
+  >
     <section id="brand" @click="$store.dispatch('setNavPayload', false)">
       <nuxt-link to="/">
         <Logo />
@@ -20,9 +23,42 @@
 </template>
 
 <script>
+  import { throttle } from 'lodash'
   export default {
+    data() {
+      return {
+        scrollUp: false,
+        scrollTop: true,
+      }
+    },
+    methods: {},
     mounted() {
-      // console.log(this.navStatus)
+      let vm = this
+      var lastScrollTop = 0
+      // Detect the scroll.
+      window.addEventListener(
+        'scroll',
+        _.throttle(function () {
+          let st = window.pageYOffset || document.documentElement.scrollTop
+          // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+          console.log(st)
+          if (st === 0) {
+            vm.scrollUp = false
+            vm.scrollTop = true
+          } else {
+            vm.scrollTop = false
+            if (st > lastScrollTop) {
+              // Downscroll code
+              vm.scrollUp = false
+            } else {
+              // Upscroll code
+              vm.scrollUp = true
+            }
+          }
+          lastScrollTop = st <= 0 ? 0 : st // For Mobile or negative scrolling
+        }, 300),
+        false
+      )
     },
     head() {
       return {
@@ -36,18 +72,28 @@
 
 <style lang="scss" scoped>
   header {
-    position: absolute;
-    z-index: 999999;
-    top: 0;
-    left: 0;
     width: 100%;
     height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-200px);
     padding: 30px;
     display: flex;
-    // align-items: flex-end;
     align-items: center;
     justify-content: space-between;
     background: $primary;
+    z-index: 999999;
+    transition: all 0.3s ease-out;
+    &.scrollTop {
+      transform: translateY(0px);
+    }
+    &.scrollUp {
+      position: fixed;
+      // background: $vanilla;
+      // color: $warmred;
+      transform: translateY(0px);
+    }
     @include breakpoint(mobile) {
       padding-right: 20px;
     }

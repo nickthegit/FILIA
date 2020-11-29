@@ -145,7 +145,7 @@
     }
     .city {
       width: 135%;
-      bottom: -25%;
+      bottom: -12%;
       left: 0;
       z-index: 2;
       @include breakpoint(tablet-mobile) {
@@ -199,7 +199,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    color: $black;
+    color: $warmred;
     @include breakpoint(mobile) {
       flex-direction: column;
       align-items: flex-start;
@@ -221,7 +221,7 @@
       }
       a {
         text-decoration: none;
-        color: $black;
+        color: $warmred;
         &:hover,
         &:focus,
         &:active {
@@ -230,7 +230,7 @@
       }
     }
     p {
-      color: rgba($black, 0.3);
+      color: rgba($warmred, 0.3);
     }
   }
 </style>
