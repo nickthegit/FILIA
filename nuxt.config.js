@@ -1,4 +1,41 @@
 import { createSEOMeta } from './utils/seo'
+const langs = [
+  {
+    code: 'en',
+    iso: 'en',
+    name: 'English',
+  },
+  {
+    name: 'Española',
+    code: 'es',
+    iso: 'es'
+  },
+  {
+    name: 'Italiano',
+    code: 'it',
+    iso: 'it'
+  },
+  {
+    name: 'Deutsche',
+    code: 'de',
+    iso: 'de'
+  },
+  {
+    name: 'Français',
+    code: 'fr',
+    iso: 'fr'
+  },
+  {
+    name: 'Nederlands',
+    code: 'nl',
+    iso: 'nl'
+  },
+  {
+    name: 'Português',
+    code: 'pt',
+    iso: 'pt'
+  }
+]
 
 export default {
   /*
@@ -69,11 +106,7 @@ export default {
     'nuxt-i18n',
   ],
   i18n: {
-    locales: [
-      { code: 'en', iso: 'en', name: 'English' },
-      { code: 'es', iso: 'es', name: 'española' },
-      { code: 'fr', iso: 'fr', name: 'French' },
-    ],
+    locales: [...langs],
     defaultLocale: 'en',
   },
   sanity: {
