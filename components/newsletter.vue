@@ -27,14 +27,13 @@
         >Subscribe</anchor-button
       >
       <small>
-        <input type="checkbox" name="gdpr" id="gdpr" v-model="gdpr" /> Yes I’d
-        like to receive news and updates from Fili.</small
-      >
-      <small
-        >To unsubscribe at any time Contact Us.<br />
-        For more info see our
-        <nuxt-link to="/privacy-policy">Privacy Policy</nuxt-link>
-      </small>
+        <input
+          type="checkbox"
+          name="gdpr"
+          id="gdpr"
+          v-model="gdpr" /><SanityContent :blocks="checkboxCopy"
+      /></small>
+      <small><SanityContent :blocks="copy" /></small>
     </form>
   </section>
 </template>
@@ -47,6 +46,12 @@
     props: {
       title: {
         type: String,
+        default: 'newsletter title',
+      },
+      checkboxCopy: {
+        default: 'newsletter title',
+      },
+      copy: {
         default: 'newsletter title',
       },
     },
@@ -185,6 +190,7 @@
     margin: 10px 0;
   }
   small {
+    display: flex;
     margin-top: 10px;
   }
   a {

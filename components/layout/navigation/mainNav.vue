@@ -29,9 +29,7 @@
       const query = await headerQuery(vm.$i18n.locale)
       this.result = await this.$sanity.fetch(query)
     },
-    mounted() {
-      console.log(this.result)
-    },
+    mounted() {},
     watch: {
       '$route.query': '$fetch',
     },

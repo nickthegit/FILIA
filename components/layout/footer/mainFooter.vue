@@ -3,7 +3,11 @@
     <section class="top">
       <div class="container">
         <div class="newsletter__wrap" id="newsletter">
-          <newsletter :title="newsletter.title" />
+          <newsletter
+            :title="result.newsletter.title"
+            :checkboxCopy="result.newsletter.checkboxCopy"
+            :copy="result.newsletter.copy"
+          />
         </div>
         <div class="contact__wrap" id="contact">
           <div class="background">
@@ -11,17 +15,12 @@
             <city class="city" />
           </div>
           <div class="copy">
-            <headline-3>{{ contact.title }}</headline-3>
-            <paragraph
-              v-for="paragraph in contact.copy"
-              :key="`contact${paragraph.index}`"
-            >
-              {{ paragraph }}
-            </paragraph>
+            <headline-3>{{ result.contact.title }}</headline-3>
+            <SanityContent :blocks="result.contact.copy" />
             <div class="socials">
               <a
                 class="social"
-                :href="contact.socials.instagram"
+                :href="result.contact.socials.instagram"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -29,7 +28,7 @@
               </a>
               <a
                 class="social"
-                :href="contact.socials.twitter"
+                :href="result.contact.socials.twitter"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -57,24 +56,36 @@
 </template>
 
 <script>
+  import { footerQuery } from '~/utils/groqQuery'
   export default {
     data() {
       return {
-        contact: {
-          title: 'Get In Touch',
-          copy: [
-            'For more information or to talk to one of our team, you can find us at info@filia.solar',
-          ],
-          socials: {
-            instagram: 'https://instagram.com/filia.solar',
-            facebook: 'https://facebook.com',
-            twitter: 'https://twitter.com/@FiliaSolar',
+        result: {
+          contact: {
+            title: 'Get In Touch',
+            copy: [
+              'For more information or to talk to one of our team, you can find us at info@filia.solar',
+            ],
+            socials: {
+              instagram: 'https://instagram.com/filia.solar',
+              facebook: 'https://facebook.com',
+              twitter: 'https://twitter.com/@FiliaSolar',
+            },
+          },
+          newsletter: {
+            title: `Join Us And Sign Up To Embrace A New Future You'Ll Be First To Hear About Launches In Your Area`,
           },
         },
-        newsletter: {
-          title: `Join Us And Sign Up To Embrace A New Future You'Ll Be First To Hear About Launches In Your Area`,
-        },
       }
+    },
+    async fetch() {
+      const vm = await this
+      const query = await footerQuery(vm.$i18n.locale)
+      this.result = await this.$sanity.fetch(query)
+    },
+    mounted() {},
+    watch: {
+      '$route.query': '$fetch',
     },
     computed: {
       year() {

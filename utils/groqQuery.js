@@ -48,3 +48,21 @@ export const headerQuery = (lang) => `
 	"headerContactText": coalesce(header.headerContactText.${lang}, header.headerContactText.en, false),
 }
 `
+
+export const footerQuery = (lang) => `
+*[_type == 'landingPage' && _id == 'landingPage'][0] {
+  "contact": {
+    "title": coalesce(contact.headline.${lang}, contact.headline.en, false),
+    "copy": coalesce(contact.copy.${lang}, contact.copy.en, false),
+    "socials": {
+			"instagram": contact.instagram,
+      "twitter": contact.twitter
+    }
+  },
+  "newsletter" : {
+    "title": coalesce(newsletter.headline.${lang}, newsletter.headline.en, false),
+    "checkboxCopy": coalesce(newsletter.checkboxCopy.${lang}, newsletter.checkboxCopy.en, false),
+    "copy": coalesce(newsletter.copy.${lang}, newsletter.copy.en, false),
+  }
+}
+`
