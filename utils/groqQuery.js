@@ -66,3 +66,10 @@ export const footerQuery = (lang) => `
   }
 }
 `
+
+export const privacyPolicyQuery = (lang) => `
+*[_type == 'privacyPolicy' && _id == 'privacyPolicy'][0] {
+  "content": coalesce(content.${lang}, content.en, false),
+  "header": coalesce(header.${lang}, header.en, false)
+}
+`
