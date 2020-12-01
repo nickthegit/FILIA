@@ -1,29 +1,29 @@
 import { createSEOMeta } from './utils/seo'
 const langs = [
   {
+    name: 'Deutsch',
+    code: 'de',
+    iso: 'de'
+  },
+  {
     code: 'en',
     iso: 'en',
     name: 'English',
   },
   {
-    name: 'Española',
+    name: 'Español',
     code: 'es',
     iso: 'es'
-  },
-  {
-    name: 'Italiano',
-    code: 'it',
-    iso: 'it'
-  },
-  {
-    name: 'Deutsche',
-    code: 'de',
-    iso: 'de'
   },
   {
     name: 'Français',
     code: 'fr',
     iso: 'fr'
+  },
+  {
+    name: 'Italiano',
+    code: 'it',
+    iso: 'it'
   },
   {
     name: 'Nederlands',
