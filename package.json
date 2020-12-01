@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-boilerplate",
+  "name": "filia",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -16,6 +16,7 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/style-resources": "^1.0.0",
     "@nuxtjs/toast": "^3.3.1",
+    "@sanity/image-url": "^0.140.19",
     "gsap": "file:gsap-bonus.tgz",
     "lodash": "^4.17.20",
     "nuxt": "^2.14.6",

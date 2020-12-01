@@ -8,6 +8,23 @@
         <Logo />
       </nuxt-link>
     </section>
+    <section class="lang" :class="langOpen ? 'open' : 'closed'">
+      <div class="current" @click="openLang">
+        {{ currentLocale[0].name
+        }}<span
+          ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+            <path d="M100 175.8l96.4-151.6H3.6z" /></svg
+        ></span>
+      </div>
+      <div class="dropdown" v-if="langOpen" @click="openLang">
+        <nuxt-link
+          v-for="locale in availableLocales"
+          :key="locale.code"
+          :to="switchLocalePath(locale.code)"
+          >{{ locale.name }}</nuxt-link
+        >
+      </div>
+    </section>
     <main-nav
       @click="$store.dispatch('setNavPayload', false)"
       class="nav_main"
@@ -29,10 +46,24 @@
       return {
         scrollUp: false,
         scrollTop: true,
+        langOpen: false,
       }
     },
-    methods: {},
+    computed: {
+      currentLocale() {
+        return this.$i18n.locales.filter((i) => i.code === this.$i18n.locale)
+      },
+      availableLocales() {
+        return this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale)
+      },
+    },
+    methods: {
+      openLang() {
+        this.langOpen = !this.langOpen
+      },
+    },
     mounted() {
+      // console.log(this.$i18n)
       let vm = this
       var lastScrollTop = 0
       // Detect the scroll.
@@ -79,7 +110,7 @@
     padding: 30px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     background: $primary;
     z-index: 999999;
     transition: all 0.3s ease-out;
@@ -97,11 +128,72 @@
     }
   }
   #brand {
-    position: relative;
+    position: absolute;
     z-index: 9;
     display: block;
-    left: 0;
+    left: 30px;
     width: 90px;
+  }
+
+  .lang {
+    width: 140px;
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+    margin-right: 20px;
+    text-align: center;
+    text-transform: capitalize;
+    background: transparent;
+    &.open {
+      background: $vanilla;
+      .current {
+        color: $warmred;
+        svg {
+          fill: $warmred;
+        }
+      }
+    }
+    @include breakpoint(mobile) {
+      margin-right: 2px;
+      width: 90px;
+      font-size: 12px;
+    }
+  }
+  .current {
+    width: 100%;
+    position: relative;
+    padding: 10px;
+    text-decoration: underline;
+    color: $vanilla;
+    cursor: pointer;
+    span {
+      width: 12px;
+      height: 100%;
+      display: inline-block;
+      vertical-align: top;
+      margin-left: 7px;
+      padding-top: 2px;
+      svg {
+        width: 100%;
+        fill: $vanilla;
+      }
+    }
+  }
+  .dropdown {
+    position: absolute;
+    // top: 0;
+    left: 0;
+    width: 100%;
+    // display: none;
+    background: $vanilla;
+    a {
+      display: block;
+      width: 100%;
+      color: $warmred;
+      text-decoration: none;
+      padding: 10px;
+      position: relative;
+    }
   }
   #mainNav {
     padding-top: $headerHeight;

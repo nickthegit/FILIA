@@ -6,12 +6,7 @@
     <article class="hero">
       <section class="headline">
         <h1>{{ hero.headline }}</h1>
-        <p
-          v-for="(paragraph, index) in hero.subtitle"
-          :key="`herosubtitle${index}`"
-        >
-          {{ paragraph }}
-        </p>
+        <SanityContent :blocks="hero.subtitle" />
         <anchor-button type="link" hrefLink="#newsletter" theme="vanilla">{{
           hero.buttonLabel
         }}</anchor-button>
@@ -26,36 +21,20 @@
     <section class="intro">
       <div class="copy">
         <headline-2>{{ intro.title }}</headline-2>
-        <paragraph
-          v-for="(paragraph, index) in intro.subtitle"
-          :key="`introsubtitle${index}`"
-        >
-          {{ paragraph }}
-        </paragraph>
-        <headline-3>HOW IT WORKS</headline-3>
-        <paragraph
-          v-for="(paragraph, index) in intro.bodyCopy"
-          :key="`introbodycopy${index}`"
-        >
-          {{ paragraph }}
-        </paragraph>
+        <SanityContent :blocks="intro.subtitle" />
         <anchor-button type="link" hrefLink="#newsletter" theme="orange">{{
           intro.buttonLabel
         }}</anchor-button>
       </div>
-      <half-image :img="intro.img" alt="Filia In Situ 1" />
+      <half-image-sanity :img="intro.img" alt="Filia In Situ 1" />
     </section>
     <section class="product-highlights">
       <div class="container">
-        <figure class="background">
-          <img
-            :srcset="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,w_1920/${highlights.backgroundImg},
-          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,w_2880/${highlights.backgroundImg} 1.5x,
-          https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,w_3840/${highlights.backgroundImg} 2x`"
-            :src="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,w_1920/${highlights.backgroundImg}`"
-            alt="Filia-InSitu-2"
-          />
-        </figure>
+        <image-sanity
+          :img="highlights.backgroundImg"
+          class="background"
+          alt="Filia In Situ 2"
+        />
         <div class="highlights">
           <div class="highlights__wrapper">
             <div
@@ -65,26 +44,26 @@
             >
               <figure class="highlight__icon">
                 <img
-                  :src="`https://res.cloudinary.com/nickjohn/image/upload/c_scale,f_auto,q_100,w_100/${highlight.icon}`"
+                  :src="`https://res.cloudinary.com/nickjohn/image/upload/c_scale,f_auto,q_100,w_100/${highlightsIcon[index]}`"
                   alt="highlight-icon"
                 />
               </figure>
               <headline-3>{{ highlight.title }}</headline-3>
-              <paragraph>{{ highlight.copy }}</paragraph>
+              <SanityContent :blocks="highlight.copy" />
             </div>
           </div>
         </div>
       </div>
     </section>
     <section class="info">
-      <half-image :img="info.img" alt="Filia In Situ 3" />
+      <half-image-sanity :img="info.img" alt="Filia In Situ 3" />
       <div class="copy">
         <!-- <h2>AN INTRODUCTION HEADLINE TO SOME BULLET POINTS</h2> -->
         <ul>
           <li v-for="(point, index) in info.points" :key="`point${index}`">
             <span><tick /></span>
             <headline-4>{{ point.title }}</headline-4>
-            <paragraph>{{ point.copy }}</paragraph>
+            <SanityContent :blocks="point.copy" />
           </li>
         </ul>
         <anchor-button type="link" hrefLink="#newsletter" theme="orange">{{
@@ -96,7 +75,7 @@
       <div class="container">
         <div class="copy">
           <headline-2>{{ jumbotron.heading }}</headline-2>
-          <paragraph>{{ jumbotron.copy }}</paragraph>
+          <SanityContent :blocks="jumbotron.copy" />
           <anchor-button type="link" hrefLink="#newsletter" theme="vanilla">{{
             jumbotron.buttonLabel
           }}</anchor-button>
@@ -115,7 +94,12 @@
       </div>
     </section>
     <section class="about">
-      <figure class="background">
+      <image-sanity
+        :img="about.image"
+        class="background"
+        alt="Filia In Situ 4"
+      />
+      <!-- <figure class="background">
         <img
           :srcset="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,w_1920/${highlights.backgroundImg},
           https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,w_2880/${highlights.backgroundImg} 1.5x,
@@ -123,19 +107,14 @@
           :src="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,w_1920/${highlights.backgroundImg}`"
           alt="Filia-InSitu-2"
         />
-      </figure>
+      </figure> -->
       <div class="container">
         <img
           src="~/assets/Assets for build/Filia-Qualifier-Logo-Gradient-RGB.png"
           alt="Filia Logo"
         />
         <headline-3>{{ about.title }}</headline-3>
-        <paragraph
-          v-for="(paragraph, index) in about.copy"
-          :key="`aboutparagraph${index}`"
-        >
-          {{ paragraph }}
-        </paragraph>
+        <SanityContent :blocks="about.copy" />
       </div>
     </section>
   </main>
@@ -145,21 +124,20 @@
   import { gsap } from 'gsap'
   import { SplitText } from 'gsap/SplitText'
   import { ScrollTrigger } from 'gsap/ScrollTrigger'
-  import Headline2 from '~/components/layout/text/headline2.vue'
 
-  import { groq } from '@nuxtjs/sanity'
+  import { indexQuery } from '~/utils/groqQuery'
 
   if (process.client) {
     gsap.registerPlugin(SplitText)
     gsap.registerPlugin(ScrollTrigger)
   }
   export default {
-    components: { Headline2 },
     async asyncData(context) {
-      const query = await groq`*[_type == "landingPage" && _id == '${context.app.i18n.locale}']`
+      const query = await indexQuery(context.app.i18n.locale)
+      // groq`*[_type == "landingPage" && _id == '${context.app.i18n.locale}']`
       const result = await context.$sanity.fetch(query)
       return {
-        test: result[0],
+        ...result,
       }
     },
     data() {
@@ -207,6 +185,11 @@
             },
           ],
         },
+        highlightsIcon: [
+          'v1605978760/Filia/Filia-Icon-Home.svg',
+          'v1605978752/Filia/Filia-Icon-Renewable.svg',
+          'v1605978742/Filia/Filia-Icon-Sun.svg',
+        ],
         info: {
           img: 'v1606421505/Filia/Filia-InSitu-05.png',
           points: [
@@ -392,8 +375,6 @@
       },
     },
     async mounted() {
-      // console.log(this)
-      console.log('TEST', this.test)
       await gsap.set('body', { position: 'fixed' })
       await gsap.set('.hero .sun', { width: '250%' })
       await gsap.set(
@@ -759,6 +740,7 @@
       top: 0;
       left: 0;
       z-index: 1;
+      opacity: 0.15;
       img {
         width: 100%;
         height: 100%;

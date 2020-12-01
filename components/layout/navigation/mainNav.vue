@@ -6,15 +6,36 @@
       theme="vanilla"
       class="nav-cta"
       :forNav="true"
-      >Join the solar revolution</anchor-button
+      >{{ result.headerBtnText }}</anchor-button
     >
-    <nuxt-link to="#contact">Contact</nuxt-link>
+    <nuxt-link to="#contact">{{ result.headerContactText }}</nuxt-link>
     <slot></slot>
   </nav>
 </template>
 
 <script>
-  export default {}
+  import { headerQuery } from '~/utils/groqQuery'
+  export default {
+    data() {
+      return {
+        result: {
+          headerBtnText: 'Join the solar revolution',
+          headerContactText: 'Contact',
+        },
+      }
+    },
+    async fetch() {
+      const vm = await this
+      const query = await headerQuery(vm.$i18n.locale)
+      this.result = await this.$sanity.fetch(query)
+    },
+    mounted() {
+      console.log(this.result)
+    },
+    watch: {
+      '$route.query': '$fetch',
+    },
+  }
 </script>
 
 <style lang="scss" scoped>

@@ -42,6 +42,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    '~/plugins/sanity-image-builder'
   ],
   /*
   ** Auto import components
@@ -68,7 +69,11 @@ export default {
     'nuxt-i18n',
   ],
   i18n: {
-    locales: ['en', 'es'],
+    locales: [
+      { code: 'en', iso: 'en', name: 'English' },
+      { code: 'es', iso: 'es', name: 'española' },
+      { code: 'fr', iso: 'fr', name: 'French' },
+    ],
     defaultLocale: 'en',
   },
   sanity: {
