@@ -132,7 +132,10 @@
     z-index: 9;
     display: block;
     left: 30px;
-    width: 90px;
+    width: 120px;
+    @include breakpoint(mobile) {
+      width: 100px;
+    }
   }
 
   .lang {

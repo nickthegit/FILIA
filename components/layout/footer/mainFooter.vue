@@ -15,7 +15,7 @@
             <city class="city" />
           </div>
           <div class="copy">
-            <headline-3>{{ result.contact.title }}</headline-3>
+            <h3>{{ result.contact.title }}</h3>
             <SanityContent :blocks="result.contact.copy" />
             <div class="socials">
               <a
@@ -83,7 +83,9 @@
       const query = await footerQuery(vm.$i18n.locale)
       this.result = await this.$sanity.fetch(query)
     },
-    mounted() {},
+    mounted() {
+      console.log(this.result)
+    },
     watch: {
       '$route.query': '$fetch',
     },

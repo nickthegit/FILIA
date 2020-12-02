@@ -1,6 +1,6 @@
 <template>
   <section>
-    <headline-3>{{ title }}</headline-3>
+    <h3>{{ title }}</h3>
     <form v-on:submit.prevent>
       <!-- name -->
       <input
@@ -45,7 +45,6 @@
   export default {
     props: {
       title: {
-        type: String,
         default: 'newsletter title',
       },
       checkboxCopy: {
