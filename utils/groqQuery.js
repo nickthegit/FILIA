@@ -55,14 +55,18 @@ export const footerQuery = (lang) => `
     "title": coalesce(contact.headline.${lang}, contact.headline.en, false),
     "copy": coalesce(contact.copy.${lang}, contact.copy.en, false),
     "socials": {
-			"instagram": contact.instagram,
-      "twitter": contact.twitter
+			"instagram": coalesce(contact.instagram, false),
+      "twitter": coalesce(contact.twitter, false),
+      "facebook": coalesce(contact.facebook, false)
     }
   },
   "newsletter" : {
     "title": coalesce(newsletter.headline.${lang}, newsletter.headline.en, false),
     "checkboxCopy": coalesce(newsletter.checkboxCopy.${lang}, newsletter.checkboxCopy.en, false),
     "copy": coalesce(newsletter.copy.${lang}, newsletter.copy.en, false),
+		"inputName": coalesce(newsletter.inputName.${lang}, newsletter.inputName.en, false),
+    "inputEmail": coalesce(newsletter.inputEmail.${lang}, newsletter.inputEmail.en, false),
+    "subscribeBtn": coalesce(newsletter.subscribeBtn.${lang}, newsletter.subscribeBtn.en, false),
   }
 }
 `

@@ -7,6 +7,9 @@
             :title="result.newsletter.title"
             :checkboxCopy="result.newsletter.checkboxCopy"
             :copy="result.newsletter.copy"
+            :inputName="result.newsletter.inputName"
+            :inputEmail="result.newsletter.inputEmail"
+            :subscribeBtn="result.newsletter.subscribeBtn"
           />
         </div>
         <div class="contact__wrap" id="contact">
@@ -33,6 +36,15 @@
                 rel="noopener noreferrer"
               >
                 <twitter />
+              </a>
+              <a
+                v-if="result.contact.socials.facebook"
+                class="social"
+                :href="result.contact.socials.facebook"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <facebook />
               </a>
             </div>
           </div>

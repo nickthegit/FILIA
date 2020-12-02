@@ -105,6 +105,17 @@ export default {
     '@nuxtjs/sanity',
     'nuxt-i18n',
   ],
+  pwa: {
+    manifest: {
+      name: 'Filia',
+      short_name: 'Filia',
+      description: 'Whether heading up and out to work or down for a siesta, dropping your Filia blind means you can rest easy, knowing you’re always generating clean renewable energy for your home',
+      background_color: '#ffffff'
+    },
+    meta: {
+      theme_color: '#ffffff'
+    }
+  },
   i18n: {
     locales: [...langs],
     defaultLocale: 'en',

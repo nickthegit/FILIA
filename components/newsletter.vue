@@ -7,7 +7,7 @@
         type="text"
         name="text"
         id="text"
-        placeholder="Name"
+        :placeholder="inputName"
         v-model.trim="$v.userName.$model"
       />
       <!-- email -->
@@ -15,7 +15,7 @@
         type="email"
         name="email"
         id="email"
-        placeholder="Email"
+        :placeholder="inputEmail"
         v-model="$v.userEmail.$model"
       />
       <!-- submit -->
@@ -24,7 +24,7 @@
         type="button"
         theme="white"
         :clickAction="submitForm"
-        >Subscribe</anchor-button
+        >{{ subscribeBtn }}</anchor-button
       >
       <small>
         <input
@@ -52,6 +52,15 @@
       },
       copy: {
         default: 'newsletter title',
+      },
+      inputName: {
+        default: 'name-',
+      },
+      inputEmail: {
+        default: 'email-',
+      },
+      subscribeBtn: {
+        default: 'subscribe-',
       },
     },
     data() {
