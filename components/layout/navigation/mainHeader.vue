@@ -132,7 +132,7 @@
     z-index: 9;
     display: block;
     left: 30px;
-    width: 120px;
+    width: 140px;
     @include breakpoint(mobile) {
       width: 100px;
     }
