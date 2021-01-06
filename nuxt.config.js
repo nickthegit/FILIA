@@ -116,7 +116,7 @@ export default {
       theme_color: '#ffffff'
     },
     icon: {
-      fileName: 'icon2.png',
+      fileName: 'icon3.png',
       purpose: 'any'
     }
   },
