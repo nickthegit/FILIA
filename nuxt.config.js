@@ -117,7 +117,7 @@ export default {
     },
     icon: {
       fileName: 'icon2.png',
-      purpose: 'any'
+      // purpose: 'any'
     }
   },
   i18n: {
