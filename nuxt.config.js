@@ -114,6 +114,10 @@ export default {
     },
     meta: {
       theme_color: '#ffffff'
+    },
+    icon: {
+      fileName: 'icon2.png',
+      purpose: 'any'
     }
   },
   i18n: {
