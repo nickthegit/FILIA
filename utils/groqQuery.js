@@ -57,7 +57,8 @@ export const footerQuery = (lang) => `
     "socials": {
 			"instagram": coalesce(contact.instagram, false),
       "twitter": coalesce(contact.twitter, false),
-      "facebook": coalesce(contact.facebook, false)
+      "facebook": coalesce(contact.facebook, false),
+      "linkedin": coalesce(contact.linkedin, false)
     }
   },
   "newsletter" : {
