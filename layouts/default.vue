@@ -1,10 +1,9 @@
 <template>
   <div>
-    <main-header />
+    <!-- <main-header /> -->
     <Nuxt />
-    <main-footer />
+    <!-- <main-footer /> -->
   </div>
 </template>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
